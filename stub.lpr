@@ -13,7 +13,6 @@ uses
 {$R *.res}
 
 begin
-  Application.Title:='Countdown';
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TfrmAbout, frmAbout);

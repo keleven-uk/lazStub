@@ -1,7 +1,7 @@
 object frmAbout: TfrmAbout
-  Left = 1099
+  Left = 1400
   Height = 233
-  Top = 393
+  Top = 54
   Width = 320
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -191,6 +191,14 @@ object frmAbout: TfrmAbout
       Caption = 'Exit'
       OnClick = btnAboutExitClick
       TabOrder = 0
+    end
+    object lblDiskSize: TLabel
+      Left = 8
+      Height = 14
+      Top = 8
+      Width = 13
+      Caption = '...'
+      ParentColor = False
     end
   end
 end

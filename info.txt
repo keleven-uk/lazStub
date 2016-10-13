@@ -1,13 +1,13 @@
 projext   :: stub
-Version   :: 0.0.0.2
+Version   :: 0.0.0.3
 Date      :: Friday 06 january 2012
 Author    :: Kevin Scott
 
 Copyright 2012 :: Kevin Scott ::  countdown<at>keleven<dot>co<dot>uk
 
-Date     of last SVN commit :: $Date:: 2012-01-15 22:00:17 +0000 (Sun, 15 Jan 2012)                                      $
-Revision of last SVN commit :: $Revision:: 2                                                                             $
-Author   of last SVN commit :: $Author:: kevin                                                                           $
+Date     of last SVN commit :: $Date:: 2012-01-24 15:24:45 +0000 (Tue, 24 Jan 2012)                                      $
+Revision of last SVN commit :: $Revision:: 3                                                                             $
+Author   of last SVN commit :: $Author:: scottk2                                                                         $
 Full URL  in SVN repository :: $HeadURL:: file:///C:/my/tmp/stub/info.txt                                                $
 
 A Simple countdown timer.
