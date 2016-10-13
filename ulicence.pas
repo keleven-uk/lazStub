@@ -50,7 +50,7 @@ begin
 
   mmoLicence.Append('');
   mmoLicence.Append('Kevin Scott (c) - 2012.');
-  mmoLicence.Append('Stub Build Version :: 5');
+  mmoLicence.Append('Stub Build Version :: 6');
 end;
 
 procedure TfrmLicence.btnLicenceExitClick(Sender: TObject);

@@ -166,7 +166,7 @@ object frmAbout: TfrmAbout
       ParentColor = False
       ParentFont = False
     end
-    object lblCountdownversion: TLabel
+    object lblStubversion: TLabel
       Left = 8
       Height = 14
       Top = 117

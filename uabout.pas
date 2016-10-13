@@ -15,7 +15,7 @@ type
   TfrmAbout = class(TForm)
     btnAboutExit: TButton;
     lblDiskSize: TLabel;
-    lblCountdownversion: TLabel;
+    lblStubversion: TLabel;
     lblProgrammer: TLabel;
     lblProgramDescription: TLabel;
     lblProgramName: TLabel;
@@ -54,7 +54,7 @@ begin
   dskSize := FloatToStrF(DiskSize(0) / 1073741824, ffFixed, 3, 2);
 
   lblLazarusVersion.Caption := format('Built with Lazarus Version :: %s', [lcl_version]);
-  lblCountdownversion.Caption := 'Stub Buld Version :: 5';
+  lblStubversion.Caption := 'Stub Buld Version :: 6';
   lblDiskSize.Caption := ' Disk Free / Size :: ' + dskFree + ' / ' +  dskSize + ' Gbytes'
 end;
 
