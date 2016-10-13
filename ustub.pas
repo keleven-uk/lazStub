@@ -6,13 +6,14 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  ComCtrls, Menus, UAbout, Uhelp, UOptions;
+  ComCtrls, Menus, UAbout, Uhelp, UOptions, uLicence;
 
 type
 
   { TfrmMain }
 
   TfrmMain = class(TForm)
+    mnuLicence: TMenuItem;
     mnuItmOptions: TMenuItem;
     mnuItmHelp: TMenuItem;
     mnuItmAbout: TMenuItem;
@@ -27,6 +28,7 @@ type
     procedure mnuItmExitClick(Sender: TObject);
     procedure mnuItmHelpClick(Sender: TObject);
     procedure mnuItmOptionsClick(Sender: TObject);
+    procedure mnuLicenceClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
     { private declarations }
@@ -69,10 +71,15 @@ begin
   frmOptions.ShowModal;
 end;
 
+procedure TfrmMain.mnuLicenceClick(Sender: TObject);
+begin
+  frmLicence.Show;
+end;
+
 procedure TfrmMain.Timer1Timer(Sender: TObject);
 begin
-  stsBrInfo.Panels.Items[0].Text:= TimeToStr(Time) ;
-  stsBrInfo.Panels.Items[1].Text:= TimeToStr(Time) ;
+  stsBrInfo.Panels.Items[0].Text := TimeToStr(Time) ;
+  stsBrInfo.Panels.Items[1].Text := FormatDateTime('DD MMM YYYY', Now);
 end;
 
 end.

@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, UStub, UAbout, Uhelp, UOptions
+  Forms, UStub, UAbout, Uhelp, UOptions, uLicence
   { you can add units after this };
 
 {$R *.res}
@@ -18,6 +18,7 @@ begin
   Application.CreateForm(TfrmAbout, frmAbout);
   Application.CreateForm(TfrmHelp, frmHelp);
   Application.CreateForm(TfrmOptions, frmOptions);
+  Application.CreateForm(TfrmLicence, frmLicence);
   Application.Run;
 end.
 

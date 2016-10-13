@@ -1,0 +1,5 @@
+Stub
+
+A template for future lazarus / freepascal projects.
+
+new stuff.

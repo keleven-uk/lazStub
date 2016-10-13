@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 1024
+  Left = 884
   Height = 216
-  Top = 142
+  Top = 202
   Width = 273
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -120,7 +120,7 @@ object frmMain: TfrmMain
   Menu = mnuMain
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '0.9.30.2'
+  LCLVersion = '0.9.30'
   object stsBrInfo: TStatusBar
     Left = 0
     Height = 23
@@ -128,11 +128,11 @@ object frmMain: TfrmMain
     Width = 273
     Panels = <    
       item
-        Width = 50
+        Width = 60
       end    
       item
         Bevel = pbRaised
-        Width = 50
+        Width = 75
       end    
       item
         Width = 50
@@ -158,6 +158,10 @@ object frmMain: TfrmMain
       object mnuItmHelp: TMenuItem
         Caption = 'Help'
         OnClick = mnuItmHelpClick
+      end
+      object mnuLicence: TMenuItem
+        Caption = 'Licence'
+        OnClick = mnuLicenceClick
       end
       object mnuItmAbout: TMenuItem
         Caption = 'About'
