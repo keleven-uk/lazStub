@@ -1,7 +1,7 @@
 object frmOptions: TfrmOptions
-  Left = 1733
+  Left = 1037
   Height = 233
-  Top = 53
+  Top = 930
   Width = 320
   BorderIcons = [biSystemMenu]
   Caption = 'Options'
@@ -13,7 +13,7 @@ object frmOptions: TfrmOptions
   Constraints.MinWidth = 320
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '0.9.30'
+  LCLVersion = '0.9.30.2'
   object Panel1: TPanel
     Left = 8
     Height = 160

@@ -21,11 +21,13 @@ type
     mnuFile: TMenuItem;
     mnuMain: TMainMenu;
     stsBrInfo: TStatusBar;
+    Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure mnuItmAboutClick(Sender: TObject);
     procedure mnuItmExitClick(Sender: TObject);
     procedure mnuItmHelpClick(Sender: TObject);
     procedure mnuItmOptionsClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { private declarations }
   public
@@ -65,6 +67,12 @@ end;
 procedure TfrmMain.mnuItmOptionsClick(Sender: TObject);
 begin
   frmOptions.ShowModal;
+end;
+
+procedure TfrmMain.Timer1Timer(Sender: TObject);
+begin
+  stsBrInfo.Panels.Items[0].Text:= TimeToStr(Time) ;
+  stsBrInfo.Panels.Items[1].Text:= TimeToStr(Time) ;
 end;
 
 end.
