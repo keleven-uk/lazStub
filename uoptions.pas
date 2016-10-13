@@ -54,12 +54,11 @@ implementation
 
 Constructor OptionsRecord.init;
 begin
-  self.Version := '8';
+  self.Version := '9';
 end;
 
 procedure TfrmOptions.FormCreate(Sender: TObject);
-VAR
-       DebufFleName : String;
+
 begin
   iniName := 'stub.ini';
 
