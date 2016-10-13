@@ -18,7 +18,7 @@
       <UseVersionInfo Value="True"/>
       <BuildNr Value="6"/>
       <Language Value="0809"/>
-      <StringTable ProductName="6" ProductVersion=""/>
+      <StringTable ProductName="7" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="1" Active="Default">
       <Item1 Name="Default" Default="True"/>
@@ -56,8 +56,8 @@
         <UnitName Value="UStub"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="49"/>
-        <CursorPos X="72" Y="82"/>
+        <TopLine Value="41"/>
+        <CursorPos X="35" Y="61"/>
         <UsageCount Value="38"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -81,7 +81,7 @@
         <UnitName Value="UAbout"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="25"/>
+        <TopLine Value="17"/>
         <CursorPos X="52" Y="57"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>
@@ -93,10 +93,9 @@
         <ComponentName Value="frmHelp"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Uhelp"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="28"/>
+        <TopLine Value="20"/>
         <CursorPos X="42" Y="56"/>
         <ExtraEditorCount Value="1"/>
         <UsageCount Value="32"/>
@@ -111,7 +110,7 @@
         <UnitName Value="UOptions"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="10"/>
+        <TopLine Value="2"/>
         <CursorPos X="1" Y="38"/>
         <UsageCount Value="29"/>
         <Loaded Value="True"/>
@@ -124,9 +123,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uLicence"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="25"/>
+        <TopLine Value="17"/>
         <CursorPos X="45" Y="53"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>

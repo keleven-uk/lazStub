@@ -53,7 +53,7 @@ begin
   mmoHelp.Append('');
   mmoHelp.Append('');
   mmoHelp.Append('Kevin Scott (c) - 2012.');
-  mmoHelp.Append('Stub Build Version :: 6.');
+  mmoHelp.Append('Stub Build Version :: 7.');
 end;
 
 procedure TfrmHelp.btnhelpExitClick(Sender: TObject);
