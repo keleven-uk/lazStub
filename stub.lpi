@@ -35,7 +35,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="5">
+    <Units Count="6">
       <Unit0>
         <Filename Value="stub.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -48,11 +48,10 @@
         <ComponentName Value="frmMain"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UStub"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="18"/>
-        <CursorPos X="3" Y="9"/>
+        <TopLine Value="1"/>
+        <CursorPos X="43" Y="9"/>
         <UsageCount Value="29"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -60,7 +59,7 @@
       <Unit2>
         <Filename Value="info.txt"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="21" Y="2"/>
@@ -74,9 +73,10 @@
         <ComponentName Value="frmAbout"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UAbout"/>
-        <EditorIndex Value="2"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="8"/>
+        <TopLine Value="12"/>
         <CursorPos X="58" Y="50"/>
         <UsageCount Value="27"/>
         <Loaded Value="True"/>
@@ -88,16 +88,30 @@
         <ComponentName Value="frmHelp"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Uhelp"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="5"/>
-        <CursorPos X="14" Y="4"/>
+        <TopLine Value="9"/>
+        <CursorPos X="3" Y="39"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit4>
+      <Unit5>
+        <Filename Value="uoptions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOptions"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UOptions"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="14" Y="1"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit5>
     </Units>
-    <JumpHistory Count="10" HistoryIndex="9">
+    <JumpHistory Count="16" HistoryIndex="15">
       <Position1>
         <Filename Value="ustub.pas"/>
         <Caret Line="114" Column="50" TopLine="1"/>
@@ -138,6 +152,30 @@
         <Filename Value="ustub.pas"/>
         <Caret Line="23" Column="1" TopLine="12"/>
       </Position10>
+      <Position11>
+        <Filename Value="uabout.pas"/>
+        <Caret Line="50" Column="58" TopLine="8"/>
+      </Position11>
+      <Position12>
+        <Filename Value="ustub.pas"/>
+        <Caret Line="38" Column="69" TopLine="18"/>
+      </Position12>
+      <Position13>
+        <Filename Value="ustub.pas"/>
+        <Caret Line="39" Column="69" TopLine="19"/>
+      </Position13>
+      <Position14>
+        <Filename Value="ustub.pas"/>
+        <Caret Line="38" Column="69" TopLine="18"/>
+      </Position14>
+      <Position15>
+        <Filename Value="ustub.pas"/>
+        <Caret Line="40" Column="69" TopLine="19"/>
+      </Position15>
+      <Position16>
+        <Filename Value="ustub.pas"/>
+        <Caret Line="67" Column="24" TopLine="29"/>
+      </Position16>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 1220
+  Left = 1106
   Height = 216
-  Top = 207
+  Top = 141
   Width = 273
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -133,6 +133,10 @@ object frmMain: TfrmMain
     top = 82
     object mnuFile: TMenuItem
       Caption = 'File'
+      object mnuItmOptions: TMenuItem
+        Caption = 'Options'
+        OnClick = mnuItmOptionsClick
+      end
       object mnuItmExit: TMenuItem
         Caption = 'Exit'
         OnClick = mnuItmExitClick

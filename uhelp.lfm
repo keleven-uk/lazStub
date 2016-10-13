@@ -1,11 +1,17 @@
 object frmHelp: TfrmHelp
-  Left = 1203
+  Left = 1121
   Height = 233
-  Top = 735
+  Top = 703
   Width = 320
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
   Caption = 'Stub Help'
   ClientHeight = 233
   ClientWidth = 320
+  Constraints.MaxHeight = 233
+  Constraints.MaxWidth = 320
+  Constraints.MinHeight = 233
+  Constraints.MinWidth = 320
   Icon.Data = {
     BE0C00000000010001002020000001001800A80C000016000000280000002000
     0000400000000100180000000000000000000000000000000000000000000000

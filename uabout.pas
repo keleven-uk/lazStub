@@ -47,7 +47,7 @@ end;
 procedure TfrmAbout.FormCreate(Sender: TObject);
 begin
   lblLazarusVersion.Caption := format('Built with Lazarus Version :: %s', [lcl_version]);
-  lblCountdownversion.Caption := 'Stub Version :: 0.0.0.1';
+  lblCountdownversion.Caption := 'Stub Version :: 0.0.0.2';
 end;
 
 end.

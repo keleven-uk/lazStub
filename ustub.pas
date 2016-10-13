@@ -6,13 +6,14 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  ComCtrls, Menus, UAbout, Uhelp;
+  ComCtrls, Menus, UAbout, Uhelp, UOptions;
 
 type
 
   { TfrmMain }
 
   TfrmMain = class(TForm)
+    mnuItmOptions: TMenuItem;
     mnuItmHelp: TMenuItem;
     mnuItmAbout: TMenuItem;
     mnuItmExit: TMenuItem;
@@ -24,6 +25,7 @@ type
     procedure mnuItmAboutClick(Sender: TObject);
     procedure mnuItmExitClick(Sender: TObject);
     procedure mnuItmHelpClick(Sender: TObject);
+    procedure mnuItmOptionsClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -58,6 +60,11 @@ end;
 procedure TfrmMain.mnuItmHelpClick(Sender: TObject);
 begin
   frmHelp.ShowModal;
+end;
+
+procedure TfrmMain.mnuItmOptionsClick(Sender: TObject);
+begin
+  frmOptions.ShowModal;
 end;
 
 end.
