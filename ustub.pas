@@ -23,6 +23,7 @@ type
     mnuMain: TMainMenu;
     stsBrInfo: TStatusBar;
     Timer1: TTimer;
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure mnuItmAboutClick(Sender: TObject);
     procedure mnuItmExitClick(Sender: TObject);
@@ -37,8 +38,9 @@ type
   end; 
 
 var
-  frmMain: TfrmMain;
-
+  frmMain  : TfrmMain;
+  debugFle : text;
+  debug    : Boolean;
 implementation
 
 {$R *.lfm}
@@ -47,8 +49,27 @@ implementation
 
 
 procedure TfrmMain.FormCreate(Sender: TObject);
+VAR
+       DebufFleName : String;
 begin
 
+  debug := true ;
+
+  if debug then begin
+    DebufFleName := 'stub.log';
+    assignfile(debugFle, DebufFleName);
+    rewrite(debugFle);
+    writeLn(debugFle, format ('%s : %s Created', [timeToStr(now), DebufFleName]));
+  end;
+end;
+
+
+procedure TfrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  if debug then begin
+    writeLn(debugFle, format ('%s : log file Closed', [timeToStr(now)]));
+    CloseFile(debugFle);
+  end;
 end;
 
 procedure TfrmMain.mnuItmAboutClick(Sender: TObject);

@@ -15,9 +15,9 @@ uses
 begin
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TfrmOptions, frmOptions);
   Application.CreateForm(TfrmAbout, frmAbout);
   Application.CreateForm(TfrmHelp, frmHelp);
-  Application.CreateForm(TfrmOptions, frmOptions);
   Application.CreateForm(TfrmLicence, frmLicence);
   Application.Run;
 end.

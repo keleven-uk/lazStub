@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls;
+  ExtCtrls, UOptions;
 
 type
 
@@ -26,7 +26,7 @@ type
   end; 
 
 var
-  frmHelp: TfrmHelp;
+  frmHelp : TfrmHelp;
 
 implementation
 
@@ -53,13 +53,14 @@ begin
   mmoHelp.Append('');
   mmoHelp.Append('');
   mmoHelp.Append('Kevin Scott (c) - 2012.');
-  mmoHelp.Append('Stub Build Version :: 7.');
+  mmoHelp.Append(format('stub Version :: %s', [OptionsRec.Version]));
 end;
 
 procedure TfrmHelp.btnhelpExitClick(Sender: TObject);
 begin
   Close;
 end;
+
 
 end.
 

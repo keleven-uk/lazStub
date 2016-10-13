@@ -46,7 +46,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="22"/>
-        <UsageCount Value="38"/>
+        <UsageCount Value="43"/>
       </Unit0>
       <Unit1>
         <Filename Value="ustub.pas"/>
@@ -56,20 +56,21 @@
         <UnitName Value="UStub"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="41"/>
-        <CursorPos X="35" Y="61"/>
-        <UsageCount Value="38"/>
+        <TopLine Value="1"/>
+        <CursorPos X="6" Y="68"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="info.txt"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="15" Y="2"/>
-        <UsageCount Value="36"/>
+        <CursorPos X="39" Y="6"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit2>
@@ -81,9 +82,9 @@
         <UnitName Value="UAbout"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="17"/>
-        <CursorPos X="52" Y="57"/>
-        <UsageCount Value="36"/>
+        <TopLine Value="25"/>
+        <CursorPos X="79" Y="57"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -95,10 +96,10 @@
         <UnitName Value="Uhelp"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="20"/>
-        <CursorPos X="42" Y="56"/>
+        <TopLine Value="29"/>
+        <CursorPos X="68" Y="56"/>
         <ExtraEditorCount Value="1"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="37"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit4>
@@ -110,9 +111,9 @@
         <UnitName Value="UOptions"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="2"/>
-        <CursorPos X="1" Y="38"/>
-        <UsageCount Value="29"/>
+        <TopLine Value="41"/>
+        <CursorPos X="1" Y="69"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -123,12 +124,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uLicence"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="17"/>
-        <CursorPos X="45" Y="53"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="25"/>
+        <CursorPos X="71" Y="53"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit6>
@@ -149,124 +149,124 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="uabout.pas"/>
-        <Caret Line="50" Column="58" TopLine="8"/>
+        <Filename Value="uhelp.pas"/>
+        <Caret Line="46" Column="8" TopLine="27"/>
       </Position1>
       <Position2>
         <Filename Value="ustub.pas"/>
-        <Caret Line="38" Column="69" TopLine="18"/>
+        <Caret Line="82" Column="72" TopLine="49"/>
       </Position2>
       <Position3>
-        <Filename Value="ustub.pas"/>
-        <Caret Line="39" Column="69" TopLine="19"/>
+        <Filename Value="uhelp.pas"/>
+        <Caret Line="31" Column="1" TopLine="19"/>
       </Position3>
       <Position4>
         <Filename Value="ustub.pas"/>
-        <Caret Line="38" Column="69" TopLine="18"/>
+        <Caret Line="36" Column="65" TopLine="30"/>
       </Position4>
       <Position5>
         <Filename Value="ustub.pas"/>
-        <Caret Line="40" Column="69" TopLine="19"/>
+        <Caret Line="62" Column="3" TopLine="43"/>
       </Position5>
       <Position6>
         <Filename Value="ustub.pas"/>
-        <Caret Line="67" Column="24" TopLine="29"/>
+        <Caret Line="53" Column="10" TopLine="34"/>
       </Position6>
       <Position7>
         <Filename Value="ustub.pas"/>
-        <Caret Line="9" Column="43" TopLine="1"/>
+        <Caret Line="55" Column="39" TopLine="36"/>
       </Position7>
       <Position8>
-        <Filename Value="uabout.pas"/>
-        <Caret Line="50" Column="58" TopLine="12"/>
+        <Filename Value="ustub.pas"/>
+        <Caret Line="53" Column="22" TopLine="41"/>
       </Position8>
       <Position9>
-        <Filename Value="uoptions.pas"/>
-        <Caret Line="38" Column="37" TopLine="1"/>
+        <Filename Value="ustub.pas"/>
+        <Caret Line="55" Column="35" TopLine="38"/>
       </Position9>
       <Position10>
         <Filename Value="ustub.pas"/>
-        <Caret Line="67" Column="13" TopLine="29"/>
+        <Caret Line="58" Column="53" TopLine="39"/>
       </Position10>
       <Position11>
         <Filename Value="ustub.pas"/>
-        <Caret Line="66" Column="13" TopLine="5"/>
+        <Caret Line="42" Column="18" TopLine="36"/>
       </Position11>
       <Position12>
         <Filename Value="ustub.pas"/>
-        <Caret Line="46" Column="40" TopLine="13"/>
+        <Caret Line="66" Column="12" TopLine="47"/>
       </Position12>
       <Position13>
         <Filename Value="ustub.pas"/>
-        <Caret Line="47" Column="44" TopLine="26"/>
+        <Caret Line="69" Column="31" TopLine="43"/>
       </Position13>
       <Position14>
-        <Filename Value="ustub.pas"/>
-        <Caret Line="49" Column="44" TopLine="27"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="58" Column="24" TopLine="47"/>
       </Position14>
       <Position15>
-        <Filename Value="ustub.pas"/>
-        <Caret Line="76" Column="41" TopLine="36"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="24" Column="30" TopLine="7"/>
       </Position15>
       <Position16>
-        <Filename Value="ustub.pas"/>
-        <Caret Line="74" Column="52" TopLine="36"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="60" Column="24" TopLine="41"/>
       </Position16>
       <Position17>
-        <Filename Value="ulicence.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="56" Column="10" TopLine="41"/>
       </Position17>
       <Position18>
-        <Filename Value="ustub.pas"/>
-        <Caret Line="75" Column="27" TopLine="36"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="61" Column="9" TopLine="42"/>
       </Position18>
       <Position19>
         <Filename Value="ustub.pas"/>
-        <Caret Line="82" Column="27" TopLine="45"/>
+        <Caret Line="65" Column="27" TopLine="35"/>
       </Position19>
       <Position20>
         <Filename Value="ustub.pas"/>
-        <Caret Line="66" Column="20" TopLine="49"/>
+        <Caret Line="66" Column="3" TopLine="36"/>
       </Position20>
       <Position21>
-        <Filename Value="ustub.pas"/>
-        <Caret Line="76" Column="13" TopLine="49"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="102" Column="12" TopLine="73"/>
       </Position21>
       <Position22>
-        <Filename Value="ustub.pas"/>
-        <Caret Line="9" Column="53" TopLine="1"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="9" Column="28" TopLine="1"/>
       </Position22>
       <Position23>
-        <Filename Value="ustub.pas"/>
-        <Caret Line="76" Column="18" TopLine="49"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="102" Column="6" TopLine="75"/>
       </Position23>
       <Position24>
-        <Filename Value="uhelp.pas"/>
-        <Caret Line="36" Column="56" TopLine="20"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="62" Column="27" TopLine="46"/>
       </Position24>
       <Position25>
-        <Filename Value="uhelp.pas"/>
-        <Caret Line="46" Column="37" TopLine="22"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="83" Column="25" TopLine="59"/>
       </Position25>
       <Position26>
-        <Filename Value="uhelp.pas"/>
-        <Caret Line="47" Column="7" TopLine="24"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="68" Column="45" TopLine="52"/>
       </Position26>
       <Position27>
-        <Filename Value="uhelp.pas"/>
-        <Caret Line="46" Column="22" TopLine="25"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="76" Column="70" TopLine="47"/>
       </Position27>
       <Position28>
-        <Filename Value="uhelp.pas"/>
-        <Caret Line="49" Column="84" TopLine="25"/>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="82" Column="79" TopLine="49"/>
       </Position28>
       <Position29>
-        <Filename Value="uhelp.pas"/>
-        <Caret Line="46" Column="8" TopLine="27"/>
+        <Filename Value="uabout.pas"/>
+        <Caret Line="57" Column="80" TopLine="25"/>
       </Position29>
       <Position30>
         <Filename Value="ustub.pas"/>
-        <Caret Line="82" Column="72" TopLine="49"/>
+        <Caret Line="9" Column="43" TopLine="1"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

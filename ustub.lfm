@@ -185,6 +185,7 @@ object frmMain: TfrmMain
     0000000000000000000000000000000000000000000000000000
   }
   Menu = mnuMain
+  OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '0.9.30.4'

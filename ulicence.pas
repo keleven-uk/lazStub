@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls;
+  ExtCtrls, UOptions;
 
 type
 
@@ -50,7 +50,7 @@ begin
 
   mmoLicence.Append('');
   mmoLicence.Append('Kevin Scott (c) - 2012.');
-  mmoLicence.Append('Stub Build Version :: 7');
+  mmoLicence.Append(format('stub Version :: %s', [OptionsRec.Version]));
 end;
 
 procedure TfrmLicence.btnLicenceExitClick(Sender: TObject);
