@@ -1,4 +1,4 @@
-unit UAbout;
+unit formAbout;
 
 {$mode objfpc}{$H+}
 
@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  LCLVersion, ExtCtrls, UOptions;
+  LCLVersion, ExtCtrls;
 
 type
 
@@ -14,6 +14,10 @@ type
 
   TfrmAbout = class(TForm)
     btnAboutExit: TButton;
+    Image1: TImage;
+    lblFileVersion: TLabel;
+    lblCompanyName: TLabel;
+    lblContact: TLabel;
     lblDiskSize: TLabel;
     lblStubversion: TLabel;
     lblProgrammer: TLabel;
@@ -35,6 +39,9 @@ var
 
 implementation
 
+uses
+  formStub;
+
 {$R *.lfm}
 
 { TfrmAbout }
@@ -53,8 +60,21 @@ begin
   dskFree := FloatToStrF(DiskFree(0) / 1073741824, ffFixed, 3, 2);
   dskSize := FloatToStrF(DiskSize(0) / 1073741824, ffFixed, 3, 2);
 
-  lblLazarusVersion.Caption := format('Built with Lazarus Version :: %s', [lcl_version]);
-  lblStubversion.Caption := format('stub Version :: %s', [OptionsRec.Version]);
+  lblProgramName.Caption := userOptions.productName;
+  lblProgramDescription.Caption := userOptions.fileDescription;
+  lblProgrammer.Caption := userOptions.legalCopyright;
+
+  {$ifdef WIN32}
+    lblLazarusVersion.Caption := format('Built with 32 bit Lazarus Version :: %s', [lcl_version]);
+  {$else}
+    lblLazarusVersion.Caption := format('Built with 64 bit Lazarus Version :: %s', [lcl_version]);
+  {$endif}
+
+  lblStubversion.Caption := format('stub Build   :: %s', [userOptions.productVersion]);
+  lblFileVersion.Caption := format('stub Version :: %s', [userOptions.fileVersion]);
+  lblCompanyName.Caption := UserOptions.CompanyName;
+  lblContact.Caption := UserOptions.Comments;
+
   lblDiskSize.Caption := ' Disk Free / Size :: ' + dskFree + ' / ' +  dskSize + ' Gbytes'
 end;
 

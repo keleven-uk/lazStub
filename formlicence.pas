@@ -1,4 +1,4 @@
-unit uLicence;
+unit formLicence;
 
 {$mode objfpc}{$H+}
 
@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, UOptions;
+  ExtCtrls;
 
 type
 
@@ -14,6 +14,9 @@ type
 
   TfrmLicence = class(TForm)
     btnLicenceExit: TButton;
+    lblComments: TLabel;
+    lblCopyRight: TLabel;
+    lblVersion: TLabel;
     mmoLicence: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -29,6 +32,9 @@ var
   frmLicence: TfrmLicence;
 
 implementation
+
+uses
+  formStub;
 
 {$R *.lfm}
 
@@ -48,9 +54,9 @@ begin
     end;
   end;
 
-  mmoLicence.Append('');
-  mmoLicence.Append('Kevin Scott (c) - 2012.');
-  mmoLicence.Append(format('stub Version :: %s', [OptionsRec.Version]));
+  lblComments.Caption:= userOptions.Comments;
+  lblCopyRight.Caption:= userOptions.legalCopyright;
+  lblVersion.Caption:= format('stub Version :: %s', [userOptions.fileVersion]);
 end;
 
 procedure TfrmLicence.btnLicenceExitClick(Sender: TObject);

@@ -1,4 +1,4 @@
-unit Uhelp;
+unit formhelp;
 
 {$mode objfpc}{$H+}
 
@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, UOptions;
+  ExtCtrls;
 
 type
 
@@ -14,6 +14,9 @@ type
 
   TfrmHelp = class(TForm)
     btnhelpExit: TButton;
+    lblComments: TLabel;
+    lblCopyRight: TLabel;
+    lblVersion: TLabel;
     mmoHelp: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -29,6 +32,9 @@ var
   frmHelp : TfrmHelp;
 
 implementation
+
+uses
+  formStub;
 
 {$R *.lfm}
 
@@ -50,10 +56,9 @@ begin
     end;
   end;
 
-  mmoHelp.Append('');
-  mmoHelp.Append('');
-  mmoHelp.Append('Kevin Scott (c) - 2012.');
-  mmoHelp.Append(format('stub Version :: %s', [OptionsRec.Version]));
+  lblComments.Caption:= userOptions.Comments;
+  lblCopyRight.Caption:= userOptions.legalCopyright;
+  lblVersion.Caption:= format('stub Version :: %s', [userOptions.fileVersion]);
 end;
 
 procedure TfrmHelp.btnhelpExitClick(Sender: TObject);

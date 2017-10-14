@@ -1,4 +1,4 @@
-unit UStub;
+unit formStub;
 
 {$mode objfpc}{$H+}
 
@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  ComCtrls, Menus, UAbout, Uhelp, UOptions, uLicence;
+  ComCtrls, Menus, formAbout, formhelp, formOptions, formLicence, uOptions;
 
 type
 
@@ -39,6 +39,7 @@ type
 
 var
   frmMain  : TfrmMain;
+  userOptions: Options;
   debugFle : text;
   debug    : Boolean;
 implementation
@@ -50,17 +51,22 @@ implementation
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 VAR
-       DebufFleName : String;
+  DebugFleName : String;
 begin
 
   debug := true ;
 
   if debug then begin
-    DebufFleName := 'stub.log';
-    assignfile(debugFle, DebufFleName);
+    DebugFleName := 'stub.log';
+    assignfile(debugFle, DebugFleName);
     rewrite(debugFle);
-    writeLn(debugFle, format ('%s : %s Created', [timeToStr(now), DebufFleName]));
+    writeLn(debugFle, format ('%s : %s Created', [timeToStr(now), DebugFleName]));
   end;
+
+  userOptions := Options.Create;  // create options file as c:\Users\<user>\AppData\Local\Stub\Options.xml
+
+  frmMain.Top := StrToInt(UserOptions.formTop);
+  frmmain.Left := StrToInt(UserOptions.formLeft);
 end;
 
 
@@ -70,6 +76,11 @@ begin
     writeLn(debugFle, format ('%s : log file Closed', [timeToStr(now)]));
     CloseFile(debugFle);
   end;
+
+   UserOptions.formTop := IntToStr(frmMain.Top);
+   UserOptions.formLeft := IntToStr(frmmain.Left);
+
+  userOptions.writeCurrentOptions;  // write out options file.
 end;
 
 procedure TfrmMain.mnuItmAboutClick(Sender: TObject);
@@ -84,7 +95,7 @@ end;
 
 procedure TfrmMain.mnuItmHelpClick(Sender: TObject);
 begin
-  frmHelp.ShowModal;
+  frmhelp.ShowModal;
 end;
 
 procedure TfrmMain.mnuItmOptionsClick(Sender: TObject);

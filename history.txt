@@ -1,0 +1,188 @@
+Build 9
+
+commit a2971cd8d5ff3c7ec0770573fd84cdd0a86870c1
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Thu Oct 13 20:36:22 2016 +0100
+
+    Recompiled to check for Lazarus 1.0 RC1 [although showing 0.9.31 in about box]
+    
+    Also turned off generate debugging info GDB in linking options.
+    This creates a lot smaller executable.
+
+ stub.log     |   4 +--
+ stub.lpi     | 104 ++++++++++++++++++++++++++++++++---------------------------
+ uoptions.lfm |   2 +-
+ uoptions.pas |   5 ++-
+ ustub.lfm    |   2 +-
+ 5 files changed, 62 insertions(+), 55 deletions(-)
+
+Build 8
+
+commit 814a8eba92e067dcc82621d9600e4d2e95c32f0a
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Thu Oct 13 20:33:49 2016 +0100
+
+    Added support for debugging messages to be written to a log file.
+    
+    Added support for a options record, which is saved in an ini file.
+    
+    All modules now load version info from the options record.
+
+ info.txt     |  11 +++--
+ stub.ini     |   2 +
+ stub.log     |   2 +
+ stub.lpi     | 134 +++++++++++++++++++++++++++++------------------------------
+ stub.lpr     |   2 +-
+ uabout.lfm   |  24 +++++------
+ uabout.pas   |   4 +-
+ uhelp.pas    |   7 ++--
+ ulicence.pas |   4 +-
+ uoptions.lfm |   2 +-
+ uoptions.pas |  86 ++++++++++++++++++++++++++++++++++++--
+ ustub.lfm    |   1 +
+ ustub.pas    |  25 ++++++++++-
+ 13 files changed, 205 insertions(+), 99 deletions(-)
+
+Build 7
+
+commit 49f030b9689017a527fac7834b9d4e396088aedc
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Thu Oct 13 20:31:21 2016 +0100
+
+    Recompiled to check for Lazarus 0.9.30.4
+    
+    Changed icon to one with transparent background [thanks Zach]
+
+ info.txt     |   8 +-
+ stub.ico     | Bin 3262 -> 5430 bytes
+ stub.lpi     |  16 ++--
+ uabout.lfm   |  30 +++----
+ uabout.pas   |   2 +-
+ uhelp.lfm    |   6 +-
+ uhelp.pas    |   2 +-
+ ulicence.lfm |   6 +-
+ ulicence.pas |   2 +-
+ uoptions.lfm |   6 +-
+ ustub.lfm    | 279 ++++++++++++++++++++++++++++++++++++-----------------------
+ 11 files changed, 212 insertions(+), 145 deletions(-)
+
+Build 6
+
+commit 0079abbd69817a46bcc4f7e9097acceb41181dfc
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Thu Oct 13 20:28:39 2016 +0100
+
+    Slight change to label names to reflect stub.
+
+ help.txt     |   2 -
+ info.txt     |   8 ++--
+ stub.lpi     | 118 +++++++++++++++++++++++++++++++----------------------------
+ uabout.lfm   |   2 +-
+ uabout.pas   |   4 +-
+ uhelp.pas    |   2 +-
+ ulicence.pas |   2 +-
+ 7 files changed, 72 insertions(+), 66 deletions(-)
+
+Build 5
+
+commit a2a7ec52f18d994fdefa715e16202d8fc85df461
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Thu Oct 13 20:27:05 2016 +0100
+
+    Changed help & about forms to load info from text files.
+
+ help.txt     |   5 ++
+ info.txt     |   6 +--
+ stub.lpi     | 143 ++++++++++++++++++++++++++++++++---------------------
+ stub.lpr     |   3 +-
+ uabout.lfm   |  26 +++++-----
+ uabout.pas   |   2 +-
+ uhelp.lfm    |   2 +-
+ uhelp.pas    |  25 +++++-----
+ ulicence.lfm | 159 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ulicence.pas |  62 +++++++++++++++++++++++
+ ustub.lfm    |  14 ++++--
+ ustub.pas    |  13 +++--
+ 12 files changed, 364 insertions(+), 96 deletions(-)
+
+Build 4
+
+commit dfbd0f92b8cfee2501ce74a81d282ca8f4f68ae4
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Thu Oct 13 20:25:19 2016 +0100
+
+    as of 29 January 2012.
+
+ GNU GENERAL PUBLIC LICENSE.txt                     | 674 +++++++++++++++
+ ...NU Project - Free Software Foundation (FSF).mht | 916 ---------------------
+ stub.lpi                                           |  71 +-
+ uabout.lfm                                         |  30 +-
+ uhelp.lfm                                          |   6 +-
+ uoptions.lfm                                       |   6 +-
+ ustub.lfm                                          |  24 +-
+ ustub.pas                                          |   8 +
+ 8 files changed, 777 insertions(+), 958 deletions(-)
+
+Build 3
+
+commit 82338db4e54b48e779d70e218dcba77557ec08fd
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Thu Oct 13 20:16:57 2016 +0100
+
+    Added GNU General Public License V3.0 - GNU Project - Free Software
+    Foundation (FSF).nht.
+    Update Help form to V3 of GNU License.
+    
+    Added [blank] option screen.
+    Added disk free space to about form.
+
+ ...NU Project - Free Software Foundation (FSF).mht | 916 +++++++++++++++++++++
+ info.txt                                           |   8 +-
+ stub.lpi                                           |  46 +-
+ stub.lpr                                           |   1 -
+ uabout.lfm                                         |  12 +-
+ uabout.pas                                         |  10 +-
+ uhelp.lfm                                          |  25 +-
+ uhelp.pas                                          |  19 +-
+ uoptions.lfm                                       |  42 +
+ uoptions.pas                                       |  47 ++
+ 10 files changed, 1089 insertions(+), 37 deletions(-)
+
+Build 2
+
+commit 0caa2a01c438339e0a4f36a52275e453eed69927
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Thu Oct 13 20:15:27 2016 +0100
+
+    as of 15 January 2012.
+
+ info.txt   | 10 +++++-----
+ stub.lpi   | 60 +++++++++++++++++++++++++++++++++++++++++++++++++-----------
+ stub.lpr   |  3 ++-
+ uabout.lfm |  9 +++++++--
+ uabout.pas |  2 +-
+ uhelp.lfm  | 10 ++++++++--
+ ustub.lfm  |  8 ++++++--
+ ustub.pas  |  9 ++++++++-
+ 8 files changed, 86 insertions(+), 25 deletions(-)
+
+Build 1
+
+commit ae3c5cff7f4bfba787c808f7077eae67167b95f9
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Thu Oct 13 20:14:17 2016 +0100
+
+    Initial import.
+
+ .gitignore |  33 +++++++++++
+ info.txt   |  15 +++++
+ stub.ico   | Bin 0 -> 3262 bytes
+ stub.lpi   | 180 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ stub.lpr   |  23 ++++++++
+ uabout.lfm | 191 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ uabout.pas |  54 +++++++++++++++++
+ uhelp.lfm  | 152 ++++++++++++++++++++++++++++++++++++++++++++++++
+ uhelp.pas  |  51 +++++++++++++++++
+ ustub.lfm  | 153 +++++++++++++++++++++++++++++++++++++++++++++++++
+ ustub.pas  |  64 +++++++++++++++++++++
+ 11 files changed, 916 insertions(+)
