@@ -5,7 +5,8 @@ unit uOptions;
 interface
 
 uses
-  Classes, SysUtils, DOM, XMLWrite, XMLRead, fileinfo, winpeimagereader, Dialogs;
+  Classes, SysUtils, DOM, XMLWrite, XMLRead, fileinfo, winpeimagereader, Dialogs,
+  Graphics, stubUntils;
 
 type
   Options = class
@@ -32,36 +33,38 @@ type
 
      NOTE :: If there is an error while either reading or writing the options file, the application is halted.
 
-     NOTE :: All values are string.  So, all will be returned as strings and all should returned as strings.
+     NOTE :: All XML values are string, so need to be casted before use - this is done in the read / write routines.
 
-     TODO :: causes a read failure if an option has been added to the class which is not in the XML file.
-             Needs some way to check.
   }
     private
-      _fileName: String;
       _dirName: String;
       //  Global
-      _Comments: string;
-      _companyName: string;
-      _fileDescription: string;
-      _fileVersion: string;
-      _InternalName: string;
-      _legalCopyright: string;
+      _Comments        : string;
+      _companyName     : string;
+      _fileDescription : string;
+      _fileVersion     : string;
+      _InternalName    : string;
+      _legalCopyright  : string;
       _originalFileName: string;
-      _productName: string;
-      _productVersion: string;
+      _productName     : string;
+      _productVersion  : string;
 
-      _formTop: string;              //  the forms top left.
-      _formLeft: string;
+      _screenSave: boolean;           //  do we save Klock position or not.
+      _formTop   : integer;           //  the forms top left.
+      _formLeft  : integer;
 
-      //  Time
-      _right: String;
-      _tab: String;
-      //  Fuzzy
-      _down: String;
-      _level: String;
+      _optionsName: string;           //  full path to the options file.
 
       procedure checkDirectory;
+      Function readChild(PassNode: TDOMNode;  name: string): string;
+      Function readChildAttribute(PassNode: TDOMNode;  name: string; attribute: string): string;
+      function writeStrChild(Doc: TXMLDocument; name: string; value: string): TDOMNode;
+      function writeFontChild(Doc: TXMLDocument; name: string; value: Tfont): TDOMNode;
+      function writeColChild(Doc: TXMLDocument; name: string; value: TColor): TDOMNode;
+      function writeBolChild(Doc: TXMLDocument; name: string; value: boolean): TDOMNode;
+      function writeIntChild(Doc: TXMLDocument; name: string; value: integer): TDOMNode;
+      function writeFloatChild(Doc: TXMLDocument; name: string; value: Double): TDOMNode;
+      function writeIntChildAttribute(Doc: TXMLDocument; name: string; value1: integer; value2: integer): TDOMNode;
     public
       //  Global - file stuff
       property Comments: String read _Comments write _Comments;
@@ -75,21 +78,16 @@ type
       property productVersion: String read _productVersion write _productVersion;
 
       //  Global - other stuff
-      property formTop: String read _formTop write _formTop;
-      property formLeft: String read _formLeft write _formLeft;
-
-      //  Time
-      property right: String read _right write _right;
-      property tab: String read _tab write _tab;
-
-      //  Fuzzy
-      property down: String read _down write _down;
-      property level: String read _level write _level;
+      property screenSave: boolean read _screenSave write _screenSave;
+      property formTop: integer read _formTop write _formTop;
+      property formLeft: integer read _formLeft write _formLeft;
+      property optionsName: string read _optionsName write _optionsName;
 
       constructor Create; overload;
       constructor Create(filename: String); overload;
 
       procedure readOptions;
+      procedure Assign(o: Options);
       procedure writeCurrentOptions;
       procedure writeDefaultOptions;
   end;  //  class
@@ -136,15 +134,30 @@ implementation
 
   constructor Options.Create; overload;
   {  creates the options class with a default filename.  }
+  var
+  optnFile: String;
   begin
     checkDirectory;
 
-    _filename := _dirName + 'Options.xml';
+    {$IFDEF TEST}
+      optnFile := 'TEST_Options';
+    {$else}
+      optnFile := 'Options';
+    {$endif}
+    {$ifdef WIN32}
+      optionsName := _dirName + optnFile + '32.xml';
+    {$else}
+      optionsName := _dirName + optnFile + '64.xml';
+    {$endif}
 
-    If FileExists(_filename) Then
-      readOptions
+    If FileExists(optionsName) Then
+    begin
+      writeDefaultOptions;       //  Set up the defaults [which includes any new values]
+      readOptions;               //  read the exiting options file.
+      writeCurrentOptions;       //  write out a new options file [which includes any new values]
+    end
     else
-      writeDefaultOptions;
+      writeDefaultOptions;       //  options file not found, write out a new one.
   end;
 
   constructor Options.Create(fileName: String); overload;
@@ -152,12 +165,16 @@ implementation
   begin
     checkDirectory;
 
-    _filename := _dirName + fileName;
+    optionsName := _dirName + fileName;
 
-    If FileExists(_filename) Then
-      readOptions
+    If FileExists(optionsName) Then
+    begin
+      writeDefaultOptions;       //  Set up the defaults [which includes any new values]
+      readOptions;               //  read the exiting options file.
+      writeCurrentOptions;       //  write out a new options file [which includes any new values]
+    end
     else
-      writeDefaultOptions;
+      writeDefaultOptions;       //  options file not found, write out a new one.
   end;
 
   procedure Options.checkDirectory;
@@ -174,15 +191,51 @@ implementation
         ShowMessage('Failed to create directory !');
   end;
 
+  procedure Options.Assign(o: Options);
+  {  Copy all fields from one options object to another.
+   Because Options is derived from TObjects and not TPersistent, we don't get assign for free.
+
+   NOTE :: When a new field of added to the Option class, it HAS to be added here.
+           Must be a better way of doing this.
+  }
+  begin
+  //  Global - file stuff
+  Comments         := o.Comments;
+  companyName      := o.companyName;
+  fileDescription  := o.fileDescription;
+  fileVersion      := o.fileVersion;
+  InternalName     := o.InternalName;
+  legalCopyright   := o.legalCopyright;
+  originalFileName := o.originalFileName;
+  productName      := o.productName;
+  productVersion   := o.productVersion;
+
+  //  Global - other stuff
+  optionsName := o.optionsName;
+  screenSave  := o.screenSave;
+  formTop     := o.formTop;
+  formLeft    := o.formLeft;
+  end;
+
   procedure Options.readOptions;
   {  Read in the options file.
-     The filename is specified when the user options class is created.
-     The file info is re-read, in case is has changed
+   The filename is specified when the user options class is created.
+   The file info is re-read, in case is has changed.
+
+   The read is now a two stage process.
+   Stage 1 - the xml node is read, this return a string value.
+   stage 2 - if the return is 'ERROR', the xml node is missing and then use the
+             default value.  If not the return will hold the value which is passed
+             to the options property.
+
+   NOTE : This cures the missing child problem, BUT NOT the missing node.
   }
   var
-    fvi: myFileVersionInfo;
-    PassNode, childNode: TDOMNode;
-    Doc: TXMLDocument;
+    fvi      : myFileVersionInfo;
+    PassNode : TDOMNode;
+    childNode: TDOMNode;
+    Doc      : TXMLDocument;
+    rtn      : string;
   begin
     try
       //  retrieve file info i.e build numner etc.
@@ -201,7 +254,7 @@ implementation
 
       try
         // Read in xml file from disk
-        ReadXMLFile(Doc, _filename);
+        ReadXMLFile(Doc, optionsName);
       except
         on E: Exception do
         begin
@@ -214,25 +267,19 @@ implementation
 
       //  Global
       PassNode := Doc.DocumentElement.FindNode('Global');
-      childNode := PassNode.FindNode('formPosition');
-      _formTop := ansiString(TDOMElement(childNode).GetAttribute('Top'));              //  the forms top left.
-      _formLeft := ansiString(TDOMElement(childNode).GetAttribute('Left'));
 
-      //  Time
-      PassNode := Doc.DocumentElement.FindNode('Time');
-      childNode := PassNode.FindNode('right');
-      right := ansiString(childNode.TextContent);
+      if assigned(PassNode) then
+      begin
+        rtn := readChild(PassNode, 'screenSave');
+        if rtn <> 'ERROR' then screenSave := StrToBool(rtn);
+        rtn := readChildAttribute(PassNode, 'formPosition', 'Top');
+        if rtn <> 'ERROR' then formTop := StrToInt(rtn);
+        rtn := readChildAttribute(PassNode, 'formPosition', 'Left');
+        if rtn <> 'ERROR' then formLeft := StrToInt(rtn);
 
-      childNode := PassNode.FindNode('tab');
-      tab := ansiString(childNode.TextContent);
-
-      //  Fuzzy
-      PassNode := Doc.DocumentElement.FindNode('Fuzzy');
-      childNode := PassNode.FindNode('down');
-      down := ansiString(childNode.TextContent);
-
-      childNode := PassNode.FindNode('level');
-      level := ansiString(childNode.TextContent);
+        rtn := readChild(PassNode, 'optionsName');
+        if rtn <> 'ERROR' then optionsName := ansistring(rtn);
+      end;
 
     finally
       // finally, free the document
@@ -253,24 +300,19 @@ implementation
     fvi:= myFileVersionInfo.create;
     fvi.GetFileInfo;
 
-    Comments := fvi.fileComments ;
-    companyName := fvi.fileCompanyName;
-    fileDescription := fvi.fileFileDescription;
-    fileVersion := fvi.fileFileVersion;
-    InternalName := fvi.fileInternalName;
-    legalCopyright := fvi.fileLegalCopyright;
+    Comments         := fvi.fileComments ;
+    companyName      := fvi.fileCompanyName;
+    fileDescription  := fvi.fileFileDescription;
+    fileVersion      := fvi.fileFileVersion;
+    InternalName     := fvi.fileInternalName;
+    legalCopyright   := fvi.fileLegalCopyright;
     originalFileName := fvi.fileOriginalFileName;
-    productName := fvi.fileProductName;
-    productVersion := fvi.fileProductVersion;
+    productName      := fvi.fileProductName;
+    productVersion   := fvi.fileProductVersion;
 
-    formTop := '100';              //  the forms top left.
-    formLeft := '100';
-
-    right :='right';
-    tab:= 'one';
-
-    down := 'down';
-    level := 'two';
+    screenSave := True;
+    formTop    := 100;              //  the forms top left.
+    formLeft   := 100;
 
     writeCurrentOptions;
   end;
@@ -281,9 +323,12 @@ implementation
      The file info is re-read, in case is has changed
   }
   var
-  Doc: TXMLDocument;
-  RootNode, ElementNode,ItemNode,TextNode: TDOMNode;
-  fvi: myFileVersionInfo;
+  Doc        : TXMLDocument;
+  RootNode   : TDOMNode;
+  ElementNode: TDOMNode;
+  ItemNode   : TDOMNode;
+  TextNode   : TDOMNode;
+  fvi        : myFileVersionInfo;
   begin
     try
       //  retrieve file info i.e build numner etc.
@@ -298,92 +343,27 @@ implementation
       Doc.Appendchild(RootNode);
       RootNode:= Doc.DocumentElement;
 
+      //  Global
       ElementNode:=Doc.CreateElement('Global');
 
-      ItemNode:=Doc.CreateElement('Comments');
-      TextNode:=Doc.CreateTextNode(wideString(fvi.fileComments));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
+      ElementNode.AppendChild(writeStrChild(doc, 'Comments', fvi.fileComments));
+      ElementNode.AppendChild(writeStrChild(doc, 'companyName', fvi.filecompanyName));
+      ElementNode.AppendChild(writeStrChild(doc, 'fileDescription', fvi.filefileDescription));
+      ElementNode.AppendChild(writeStrChild(doc, 'fileVersion', fvi.filefileVersion));
+      ElementNode.AppendChild(writeStrChild(doc, 'InternalName', fvi.fileInternalName));
+      ElementNode.AppendChild(writeStrChild(doc, 'legalCopyright', fvi.fileLegalCopyright));
+      ElementNode.AppendChild(writeStrChild(doc, 'originalFileName', fvi.fileOriginalFileName));
+      ElementNode.AppendChild(writeStrChild(doc, 'productName', fvi.fileProductName));
+      ElementNode.AppendChild(writeStrChild(doc, 'productVersion', fvi.fileProductVersion));
 
-      ItemNode:=Doc.CreateElement('companyName');
-      TextNode:=Doc.CreateTextNode(wideString(fvi.fileCompanyName));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
+      ElementNode.AppendChild(writeStrChild(doc, 'optionsName', optionsName));
 
-      ItemNode:=Doc.CreateElement('fileDescription');
-      TextNode:=Doc.CreateTextNode(WideString(fvi.fileFileDescription));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      ItemNode:=Doc.CreateElement('fileVersion');
-      TextNode:=Doc.CreateTextNode(WideString(fvi.fileFileVersion));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      ItemNode:=Doc.CreateElement('InternalName');
-      TextNode:=Doc.CreateTextNode(WideString(fvi.fileInternalName));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      ItemNode:=Doc.CreateElement('legalCopyright');
-      TextNode:=Doc.CreateTextNode(WideString(fvi.fileLegalCopyright));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      ItemNode:=Doc.CreateElement('originalFileName');
-      TextNode:=Doc.CreateTextNode(WideString(fvi.fileOriginalFileName));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      ItemNode:=Doc.CreateElement('productName');
-      TextNode:=Doc.CreateTextNode(WideString(fvi.fileProductName));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      ItemNode:=Doc.CreateElement('productVersion');
-      TextNode:=Doc.CreateTextNode(WideString(fvi.fileProductVersion));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      ItemNode:=Doc.CreateElement('formPosition');              //  the forms top left.
-      TDOMElement(ItemNode).SetAttribute('Top', WideString(formTop));
-      TDOMElement(ItemNode).SetAttribute('Left', WideString(formLeft));
-      TextNode:=Doc.CreateTextNode('');
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      RootNode.AppendChild(ElementNode);
-
-
-      ElementNode:=Doc.CreateElement('Time');
-      ItemNode:=Doc.CreateElement('right');
-      TextNode:=Doc.CreateTextNode(WideString(right));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      ItemNode:=Doc.CreateElement('tab');
-      TextNode:=Doc.CreateTextNode(WideString(tab));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      RootNode.AppendChild(ElementNode);
-
-      ElementNode:=Doc.CreateElement('Fuzzy');
-      ItemNode:=Doc.CreateElement('down');
-      TextNode:=Doc.CreateTextNode(WideString(down));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      ItemNode:=Doc.CreateElement('level');
-      TextNode:=Doc.CreateTextNode(WideString(level));
-      ItemNode.AppendChild(TextNode);
-      ElementNode.AppendChild(ItemNode);
-
-      RootNode.AppendChild(ElementNode);
+      ElementNode.AppendChild(writeBolChild(doc, 'screenSave', screenSave));
+      ElementNode.AppendChild(writeIntChildAttribute(Doc, 'formPosition', formTop, formLeft));
 
       try
         // Save XML
-        WriteXMLFile(Doc, _filename);
+        WriteXMLFile(Doc, optionsName);
       except
         on E: Exception do
         begin
@@ -428,6 +408,117 @@ implementation
           FileVerInfo.Free;
     end;
 
+  end;
+   //
+  //........................................ Helper functions ....................
+  //
+  Function Options.readChild(PassNode: TDOMNode;  name: string): string;
+  {  Read a child node and return its [string] value.    }
+  var
+      childNode: TDOMNode;
+  begin
+      childNode := PassNode.FindNode(name);
+
+      if assigned(childNode) then
+        result := childNode.TextContent
+      else
+        result := 'ERROR';
+  end;
+
+  Function Options.readChildAttribute(PassNode: TDOMNode;  name: string; attribute: string): string;
+  {  Read a child node and return its named [string] attribute.    }
+  var
+      childNode: TDOMNode;
+  begin
+    childNode := PassNode.FindNode(name);
+
+    if assigned(childNode) then
+      result := TDOMElement(childNode).GetAttribute(attribute)
+    else
+      result := 'ERROR';
+  end;
+
+  function Options.writeStrChild(Doc: TXMLDocument; name: string; value: string): TDOMNode;
+  {  Write a [string] value to a child node.    }
+  var
+    ItemNode, TextNode: TDOMNode;
+  begin
+    ItemNode := Doc.CreateElement(name);
+    TextNode := Doc.CreateTextNode(WideString(value));
+    ItemNode.AppendChild(TextNode);
+    result := ItemNode;
+  end;
+
+  function Options.writeColChild(Doc: TXMLDocument; name: string; value: TColor): TDOMNode;
+  {  Write a [string] value to a child node.    }
+  var
+    ItemNode, TextNode: TDOMNode;
+  begin
+    ItemNode := Doc.CreateElement(name);
+    TextNode := Doc.CreateTextNode(ColorToString(value));
+    ItemNode.AppendChild(TextNode);
+    result := ItemNode;
+  end;
+
+  function Options.writeFontChild(Doc: TXMLDocument; name: string; value: TFont): TDOMNode;
+  {  Write a [font] value to a child node.    }
+  var
+    ItemNode, TextNode: TDOMNode;
+  begin
+    ItemNode := Doc.CreateElement(name);
+    TextNode := Doc.CreateTextNode(FontToString(value));
+    ItemNode.AppendChild(TextNode);
+    result := ItemNode;
+  end;
+
+  function Options.writeBolChild(Doc: TXMLDocument; name: string; value: boolean): TDOMNode;
+  {  Write a [boolean] value to a child node.    }
+  var
+    ItemNode, TextNode: TDOMNode;
+  begin
+    ItemNode := Doc.CreateElement(name);
+    TextNode := Doc.CreateTextNode(BoolToStr(value));
+    ItemNode.AppendChild(TextNode);
+    result := ItemNode;
+  end;
+
+  function Options.writeFloatChild(Doc: TXMLDocument; name: string; value: Double): TDOMNode;
+  {  Write a [boolean] value to a child node.    }
+  var
+    ItemNode, TextNode: TDOMNode;
+  begin
+    ItemNode := Doc.CreateElement(name);
+    TextNode := Doc.CreateTextNode(FloatToStr(value));
+    ItemNode.AppendChild(TextNode);
+    result := ItemNode;
+  end;
+
+  function Options.writeIntChild(Doc: TXMLDocument; name: string; value: integer): TDOMNode;
+  {  Write a [integer] value to a child node.    }
+  var
+    ItemNode, TextNode: TDOMNode;
+  begin
+    ItemNode := Doc.CreateElement(name);
+    TextNode := Doc.CreateTextNode(IntToStr(value));
+    ItemNode.AppendChild(TextNode);
+    result := ItemNode;
+  end;
+
+  function Options.writeIntChildAttribute(Doc: TXMLDocument; name: string; value1: integer; value2: integer): TDOMNode;
+  {  Write a [integer] attribute to a child node.
+
+     It seems you have to write both attributes at once, i can read them singularly.
+     So, this routine is hard coded for form position until i can fix.
+  }
+  var
+    ItemNode, TextNode: TDOMNode;
+  begin
+    ItemNode := Doc.CreateElement(name);
+    TDOMElement(ItemNode).SetAttribute('Top', IntToStr(value1));
+    TDOMElement(ItemNode).SetAttribute('Left', IntToStr(value2));
+    TextNode := Doc.CreateTextNode('');
+    ItemNode.AppendChild(TextNode);
+    result := ItemNode;
   end;
 
 end.

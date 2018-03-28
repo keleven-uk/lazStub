@@ -38,10 +38,11 @@ type
   end; 
 
 var
-  frmMain  : TfrmMain;
-  userOptions: Options;
-  debugFle : text;
-  debug    : Boolean;
+  frmMain     : TfrmMain;
+  userOptions : Options;
+  debugFle    : text;
+  debug       : Boolean;
+  appStartTime: int64;          //  used by formAbout to determine how long the app has been running.
 implementation
 
 {$R *.lfm}
@@ -53,7 +54,7 @@ procedure TfrmMain.FormCreate(Sender: TObject);
 VAR
   DebugFleName : String;
 begin
-
+  appStartTime := GetTickCount64;  //  tick count when application starts.
   debug := true ;
 
   if debug then begin
@@ -65,8 +66,8 @@ begin
 
   userOptions := Options.Create;  // create options file as c:\Users\<user>\AppData\Local\Stub\Options.xml
 
-  frmMain.Top := StrToInt(UserOptions.formTop);
-  frmmain.Left := StrToInt(UserOptions.formLeft);
+  frmMain.Top := UserOptions.formTop;
+  frmmain.Left := UserOptions.formLeft;
 end;
 
 
@@ -77,8 +78,8 @@ begin
     CloseFile(debugFle);
   end;
 
-   UserOptions.formTop := IntToStr(frmMain.Top);
-   UserOptions.formLeft := IntToStr(frmmain.Left);
+   UserOptions.formTop := frmMain.Top;
+   UserOptions.formLeft := frmmain.Left;
 
   userOptions.writeCurrentOptions;  // write out options file.
 end;
