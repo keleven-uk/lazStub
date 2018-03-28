@@ -1,7 +1,7 @@
 object frmLicence: TfrmLicence
-  Left = 1480
+  Left = 1437
   Height = 267
-  Top = 218
+  Top = 265
   Width = 420
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -119,7 +119,7 @@ object frmLicence: TfrmLicence
   }
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '1.8.0.4'
+  LCLVersion = '1.8.2.0'
   object Panel1: TPanel
     Left = 8
     Height = 160

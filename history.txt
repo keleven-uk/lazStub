@@ -1,3 +1,57 @@
+Build 11
+
+Code as at 28 march 2018.
+Compiles with lazarus 1.8.2.0
+Prior to uploading to GitHub.
+
+Build 10
+
+commit bae8fb7d318d10e5ac06c6e894a150254f9a913f
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Sat Oct 14 21:55:43 2017 +0100
+
+    Renamed all form files from uxxx.pas to formxxx.pas.
+    i.e.  uStub.pas -> formStub.pas.
+    
+    So, all source files that contain GUI elements will start with form.
+    All none GUI source files will start with u - a unit file.
+    
+    Removed .ini options unit and replaced with all new XML based options unit.
+    
+    Added Powered by Lazarus icon to about page.
+    Added a few more labels to the About page.
+    
+    Amended About, Help & Licence pages to use new options.
+
+    Added config file for SourceMonitor.
+    Currently
+    817 lines of source code.
+    362 statements
+    13.6% comment
+
+ .gitignore                      |   5 +-
+ README.md                       |   3 +
+ formabout.lfm                   | 713 ++++++++++++++++++++++++++++++++++++++++
+ uabout.pas => formabout.pas     |  28 +-
+ uhelp.lfm => formhelp.lfm       |  42 ++-
+ uhelp.pas => formhelp.pas       |  17 +-
+ ulicence.lfm => formlicence.lfm |  48 ++-
+ ulicence.pas => formlicence.pas |  16 +-
+ uoptions.lfm => formoptions.lfm |   7 +-
+ formoptions.pas                 |  43 +++
+ ustub.lfm => formstub.lfm       |   7 +-
+ ustub.pas => formstub.pas       |  25 +-
+ history.txt                     | 188 +++++++++++
+ info.txt                        |  14 -
+ powered_by.png                  | Bin 0 -> 15189 bytes
+ stub.log                        |   4 +-
+ stub.lpi                        | 224 ++++++-------
+ stub.lpr                        |   4 +-
+ uabout.lfm                      | 204 ------------
+ uoptions.pas                    | 501 ++++++++++++++++++++++------
+ 20 files changed, 1608 insertions(+), 485 deletions(-)
+
+
 Build 9
 
 commit a2971cd8d5ff3c7ec0770573fd84cdd0a86870c1
