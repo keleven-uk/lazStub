@@ -16,9 +16,9 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
-      <BuildNr Value="12"/>
+      <BuildNr Value="13"/>
       <Language Value="0809"/>
-      <StringTable Comments="conatct :: stub&lt;at>keleven.co.uk" CompanyName="www.keleven.co.uk" FileDescription="A template for future lazarus / freepascal projects" InternalName="Stub" LegalCopyright="(c) Kevin Scott [2012 - 2018]" OriginalFilename="Stub" ProductName="Stub" ProductVersion="Build 12"/>
+      <StringTable Comments="conatct :: stub&lt;at>keleven.co.uk" CompanyName="www.keleven.co.uk" FileDescription="A template for future lazarus / freepascal projects" InternalName="Stub" LegalCopyright="(c) Kevin Scott [2012 - 2018]" OriginalFilename="Stub" ProductName="Stub" ProductVersion="Build 13"/>
     </VersionInfo>
     <BuildModes Count="1" Active="Default">
       <Item1 Name="Default" Default="True"/>
@@ -54,10 +54,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="formStub"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="61"/>
-        <CursorPos X="41" Y="82"/>
+        <CursorPos X="25" Y="82"/>
         <UsageCount Value="54"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -78,7 +76,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="formAbout"/>
         <EditorIndex Value="7"/>
-        <CursorPos X="45" Y="9"/>
+        <TopLine Value="96"/>
+        <CursorPos X="25" Y="82"/>
         <UsageCount Value="52"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -89,13 +88,12 @@
         <ComponentName Value="frmHelp"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="30"/>
-        <CursorPos X="106" Y="61"/>
+        <EditorIndex Value="5"/>
+        <CursorPos X="110" Y="62"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
-          <EditorIndex Value="5"/>
-          <TopLine Value="9"/>
-          <CursorPos X="107" Y="61"/>
+          <TopLine Value="29"/>
+          <CursorPos X="17" Y="16"/>
         </ExtraEditor1>
         <UsageCount Value="48"/>
         <Loaded Value="True"/>
@@ -109,8 +107,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="formOptions"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="2"/>
-        <CursorPos X="9"/>
+        <CursorPos X="5" Y="19"/>
         <UsageCount Value="45"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -123,8 +120,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="formLicence"/>
         <EditorIndex Value="6"/>
-        <TopLine Value="33"/>
-        <CursorPos Y="57"/>
+        <TopLine Value="28"/>
+        <CursorPos X="24" Y="58"/>
         <UsageCount Value="38"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -146,7 +143,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uOptions"/>
         <EditorIndex Value="3"/>
-        <CursorPos X="23" Y="9"/>
+        <TopLine Value="480"/>
+        <CursorPos X="28" Y="401"/>
         <UsageCount Value="31"/>
         <Loaded Value="True"/>
       </Unit9>
@@ -154,8 +152,10 @@
         <Filename Value="stubuntils.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="stubUntils"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
-        <CursorPos X="49" Y="8"/>
+        <TopLine Value="106"/>
+        <CursorPos X="23" Y="201"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit10>

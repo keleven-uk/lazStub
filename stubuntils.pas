@@ -174,12 +174,12 @@ begin
 
   noSeconds := noTicks div 1000;                  //  1000 ticks per second.
 
-  noOfDays := noSeconds div 86400;
-  noSeconds := noSeconds - (noOfDays * 86400);
-  noOfHours := noSeconds div 3600;
-  noSeconds := noSeconds - (noOfHours * 3600);
+  noOfDays    := noSeconds div 86400;
+  noSeconds   := noSeconds - (noOfDays * 86400);
+  noOfHours   := noSeconds div 3600;
+  noSeconds   := noSeconds - (noOfHours * 3600);
   noOfMinutes := noSeconds div 60;
-  noSeconds := noSeconds - (noOfMinutes * 60);
+  noSeconds   := noSeconds - (noOfMinutes * 60);
   NoOfSeconds := noSeconds;
 
   Result := format('%d days : %d hours : %d mins : %d secs', [noOfDays, noOfHours, noOfMinutes, noOfSeconds]);
@@ -198,8 +198,8 @@ VAR
 begin
   tmpFileName := GetTempDir(true) + 'ver.txt';
 
-  AProcess := TProcess.Create(nil);
-  AProcess.Options := [poWaitOnExit, poUsePipes];
+  AProcess            := TProcess.Create(nil);
+  AProcess.Options    := [poWaitOnExit, poUsePipes];
   AProcess.Executable := 'CMD ';
   AProcess.Parameters.Add('/C ver >' + tmpFileName);
   AProcess.Execute;

@@ -1,9 +1,24 @@
+Build 13
+
+Corrected a bug with writing default options in uOptions.
+
+Corrected a bug with compile time in formAbout.
+
+Currently
+1182 lines of source code.
+554 statements
+17.4% commen
+
+
 Build 12
+
+commit 3ebc4e6431767f7feb01eaccc35a5eab6b234a35
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Wed Mar 28 21:14:34 2018 +0100
 
 Brought Stub upto date.
 Changed the About screen - now look similar to the About screen in lazKlock.
 Changed the way the userOptions are saved to the XML file.  This refelcts the changes in lazKlock.
-
 
 Currently
 1172 lines of source code.
@@ -12,6 +27,10 @@ Currently
     
 
 Build 11
+
+commit 5a41567bd0e6fd283502f438e723c84820d9efd2
+Author: Kevin Scott <lazStub@keleven.co.uk>
+Date:   Wed Mar 28 19:30:29 2018 +0100
 
 Code as at 28 march 2018.
 Compiles with lazarus 1.8.2.0

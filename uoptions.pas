@@ -67,21 +67,21 @@ type
       function writeIntChildAttribute(Doc: TXMLDocument; name: string; value1: integer; value2: integer): TDOMNode;
     public
       //  Global - file stuff
-      property Comments: String read _Comments write _Comments;
-      property companyName: String read _companyName write _companyName;
-      property fileDescription: String read _fileDescription write _fileDescription;
-      property fileVersion: String read _fileVersion write _fileVersion;
-      property InternalName: String read _InternalName write _InternalName;
-      property legalCopyright: String read _legalCopyright write _legalCopyright;
+      property Comments        : String read _Comments         write _Comments;
+      property companyName     : String read _companyName      write _companyName;
+      property fileDescription : String read _fileDescription  write _fileDescription;
+      property fileVersion     : String read _fileVersion      write _fileVersion;
+      property InternalName    : String read _InternalName     write _InternalName;
+      property legalCopyright  : String read _legalCopyright   write _legalCopyright;
       property originalFileName: String read _originalFileName write _originalFileName;
-      property productName: String read _productName write _productName;
-      property productVersion: String read _productVersion write _productVersion;
+      property productName     : String read _productName      write _productName;
+      property productVersion  : String read _productVersion   write _productVersion;
 
       //  Global - other stuff
-      property screenSave: boolean read _screenSave write _screenSave;
-      property formTop: integer read _formTop write _formTop;
-      property formLeft: integer read _formLeft write _formLeft;
-      property optionsName: string read _optionsName write _optionsName;
+      property screenSave : boolean read _screenSave  write _screenSave;
+      property formTop    : integer read _formTop     write _formTop;
+      property formLeft   : integer read _formLeft    write _formLeft;
+      property optionsName: string  read _optionsName write _optionsName;
 
       constructor Create; overload;
       constructor Create(filename: String); overload;
@@ -102,26 +102,26 @@ type
   }
 
     private
-      _comments: String;
-      _companyName: String;
-      _fileDescription: String;
-      _fileVersion: String;
-      _InternalName: String;
-      _legalCopyright: String;
+      _comments        : String;
+      _companyName     : String;
+      _fileDescription : String;
+      _fileVersion     : String;
+      _InternalName    : String;
+      _legalCopyright  : String;
       _originalFileName: String;
-      _productName: String;
-      _productVersion: String;
+      _productName     : String;
+      _productVersion  : String;
 
     public
-      property fileComments: String read _comments write _comments;
-      property fileCompanyName: String read _companyName write _companyName;
-      property fileFileDescription: String read _fileDescription write _fileDescription;
-      property fileFileVersion: String read _fileVersion write _fileVersion;
-      property fileInternalName: String read _InternalName write _InternalName;
-      property fileLegalCopyright: String read _legalCopyright write _legalCopyright;
+      property fileComments        : String read _comments         write _comments;
+      property fileCompanyName     : String read _companyName      write _companyName;
+      property fileFileDescription : String read _fileDescription  write _fileDescription;
+      property fileFileVersion     : String read _fileVersion      write _fileVersion;
+      property fileInternalName    : String read _InternalName     write _InternalName;
+      property fileLegalCopyright  : String read _legalCopyright   write _legalCopyright;
       property fileOriginalFileName: String read _originalFileName write _originalFileName;
-      property fileProductName: String read _productName write _productName;
-      property fileProductVersion: String read _productVersion write _productVersion;
+      property fileProductName     : String read _productName      write _productName;
+      property fileProductVersion  : String read _productVersion   write _productVersion;
 
       procedure GetFileInfo;
   end;
@@ -233,7 +233,6 @@ implementation
   var
     fvi      : myFileVersionInfo;
     PassNode : TDOMNode;
-    childNode: TDOMNode;
     Doc      : TXMLDocument;
     rtn      : string;
   begin
@@ -242,15 +241,15 @@ implementation
       fvi:= myFileVersionInfo.create;
       fvi.GetFileInfo;
 
-      Comments := fvi.fileComments;
-      companyName := fvi.fileCompanyName;
-      fileDescription := fvi.fileFileDescription;
-      fileVersion := fvi.fileFileVersion;
-      InternalName := fvi.fileInternalName;
-      legalCopyright := fvi.fileLegalCopyright;
+      Comments         := fvi.fileComments;
+      companyName      := fvi.fileCompanyName;
+      fileDescription  := fvi.fileFileDescription;
+      fileVersion      := fvi.fileFileVersion;
+      InternalName     := fvi.fileInternalName;
+      legalCopyright   := fvi.fileLegalCopyright;
       originalFileName := fvi.fileOriginalFileName;
-      productName := fvi.fileProductName;
-      productVersion := fvi.fileProductVersion;
+      productName      := fvi.fileProductName;
+      productVersion   := fvi.fileProductVersion;
 
       try
         // Read in xml file from disk
@@ -313,8 +312,6 @@ implementation
     screenSave := True;
     formTop    := 100;              //  the forms top left.
     formLeft   := 100;
-
-    writeCurrentOptions;
   end;
 
   procedure Options.writeCurrentOptions;
@@ -326,8 +323,6 @@ implementation
   Doc        : TXMLDocument;
   RootNode   : TDOMNode;
   ElementNode: TDOMNode;
-  ItemNode   : TDOMNode;
-  TextNode   : TDOMNode;
   fvi        : myFileVersionInfo;
   begin
     try
@@ -346,19 +341,19 @@ implementation
       //  Global
       ElementNode:=Doc.CreateElement('Global');
 
-      ElementNode.AppendChild(writeStrChild(doc, 'Comments', fvi.fileComments));
-      ElementNode.AppendChild(writeStrChild(doc, 'companyName', fvi.filecompanyName));
-      ElementNode.AppendChild(writeStrChild(doc, 'fileDescription', fvi.filefileDescription));
-      ElementNode.AppendChild(writeStrChild(doc, 'fileVersion', fvi.filefileVersion));
-      ElementNode.AppendChild(writeStrChild(doc, 'InternalName', fvi.fileInternalName));
-      ElementNode.AppendChild(writeStrChild(doc, 'legalCopyright', fvi.fileLegalCopyright));
+      ElementNode.AppendChild(writeStrChild(doc, 'Comments',         fvi.fileComments));
+      ElementNode.AppendChild(writeStrChild(doc, 'companyName',      fvi.filecompanyName));
+      ElementNode.AppendChild(writeStrChild(doc, 'fileDescription',  fvi.filefileDescription));
+      ElementNode.AppendChild(writeStrChild(doc, 'fileVersion',      fvi.filefileVersion));
+      ElementNode.AppendChild(writeStrChild(doc, 'InternalName',     fvi.fileInternalName));
+      ElementNode.AppendChild(writeStrChild(doc, 'legalCopyright',   fvi.fileLegalCopyright));
       ElementNode.AppendChild(writeStrChild(doc, 'originalFileName', fvi.fileOriginalFileName));
-      ElementNode.AppendChild(writeStrChild(doc, 'productName', fvi.fileProductName));
-      ElementNode.AppendChild(writeStrChild(doc, 'productVersion', fvi.fileProductVersion));
+      ElementNode.AppendChild(writeStrChild(doc, 'productName',      fvi.fileProductName));
+      ElementNode.AppendChild(writeStrChild(doc, 'productVersion',   fvi.fileProductVersion));
 
       ElementNode.AppendChild(writeStrChild(doc, 'optionsName', optionsName));
 
-      ElementNode.AppendChild(writeBolChild(doc, 'screenSave', screenSave));
+      ElementNode.AppendChild(writeBolChild(doc,          'screenSave',   screenSave));
       ElementNode.AppendChild(writeIntChildAttribute(Doc, 'formPosition', formTop, formLeft));
 
       try
@@ -395,15 +390,15 @@ implementation
     try
       FileVerInfo.ReadFileInfo;
 
-      fileComments := FileVerInfo.VersionStrings.Values['Comments'];
-      fileCompanyName := FileVerInfo.VersionStrings.Values['CompanyName'];
-      fileFileDescription := FileVerInfo.VersionStrings.Values['FileDescription'];
-      fileFileVersion := FileVerInfo.VersionStrings.Values['FileVersion'];
-      fileInternalName := FileVerInfo.VersionStrings.Values['InternalName'];
-      fileLegalCopyright := FileVerInfo.VersionStrings.Values['LegalCopyright'];
+      fileComments         := FileVerInfo.VersionStrings.Values['Comments'];
+      fileCompanyName      := FileVerInfo.VersionStrings.Values['CompanyName'];
+      fileFileDescription  := FileVerInfo.VersionStrings.Values['FileDescription'];
+      fileFileVersion      := FileVerInfo.VersionStrings.Values['FileVersion'];
+      fileInternalName     := FileVerInfo.VersionStrings.Values['InternalName'];
+      fileLegalCopyright   := FileVerInfo.VersionStrings.Values['LegalCopyright'];
       fileOriginalFileName := FileVerInfo.VersionStrings.Values['OriginalFilename'];
-      fileProductName := FileVerInfo.VersionStrings.Values['ProductName'];
-      fileProductVersion := FileVerInfo.VersionStrings.Values['ProductVersion'];
+      fileProductName      := FileVerInfo.VersionStrings.Values['ProductName'];
+      fileProductVersion   := FileVerInfo.VersionStrings.Values['ProductVersion'];
     finally
           FileVerInfo.Free;
     end;

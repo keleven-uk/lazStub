@@ -13,16 +13,17 @@ type
   { TfrmMain }
 
   TfrmMain = class(TForm)
-    mnuLicence: TMenuItem;
+    mnuLicence   : TMenuItem;
     mnuItmOptions: TMenuItem;
-    mnuItmHelp: TMenuItem;
-    mnuItmAbout: TMenuItem;
-    mnuItmExit: TMenuItem;
-    mnuhelp: TMenuItem;
-    mnuFile: TMenuItem;
-    mnuMain: TMainMenu;
-    stsBrInfo: TStatusBar;
-    Timer1: TTimer;
+    mnuItmHelp   : TMenuItem;
+    mnuItmAbout  : TMenuItem;
+    mnuItmExit   : TMenuItem;
+    mnuhelp      : TMenuItem;
+    mnuFile      : TMenuItem;
+    mnuMain      : TMainMenu;
+    stsBrInfo    : TStatusBar;
+    Timer1       : TTimer;
+
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure mnuItmAboutClick(Sender: TObject);
@@ -55,7 +56,7 @@ VAR
   DebugFleName : String;
 begin
   appStartTime := GetTickCount64;  //  tick count when application starts.
-  debug := true ;
+  debug        := true ;
 
   if debug then begin
     DebugFleName := 'stub.log';
@@ -66,7 +67,7 @@ begin
 
   userOptions := Options.Create;  // create options file as c:\Users\<user>\AppData\Local\Stub\Options.xml
 
-  frmMain.Top := UserOptions.formTop;
+  frmMain.Top  := UserOptions.formTop;
   frmmain.Left := UserOptions.formLeft;
 end;
 
@@ -78,7 +79,7 @@ begin
     CloseFile(debugFle);
   end;
 
-   UserOptions.formTop := frmMain.Top;
+   UserOptions.formTop  := frmMain.Top;
    UserOptions.formLeft := frmmain.Left;
 
   userOptions.writeCurrentOptions;  // write out options file.

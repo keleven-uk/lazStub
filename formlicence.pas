@@ -14,12 +14,13 @@ type
 
   TfrmLicence = class(TForm)
     btnLicenceExit: TButton;
-    lblComments: TLabel;
-    lblCopyRight: TLabel;
-    lblVersion: TLabel;
-    mmoLicence: TMemo;
-    Panel1: TPanel;
-    Panel2: TPanel;
+    lblComments   : TLabel;
+    lblCopyRight  : TLabel;
+    lblVersion    : TLabel;
+    mmoLicence    : TMemo;
+    Panel1        : TPanel;
+    Panel2        : TPanel;
+
     procedure btnLicenceExitClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -54,9 +55,9 @@ begin
     end;
   end;
 
-  lblComments.Caption:= userOptions.Comments;
-  lblCopyRight.Caption:= userOptions.legalCopyright;
-  lblVersion.Caption:= format('stub Version :: %s', [userOptions.fileVersion]);
+  lblComments.Caption  := userOptions.Comments;
+  lblCopyRight.Caption := userOptions.legalCopyright;
+  lblVersion.Caption   := format('stub Version :: %s', [userOptions.fileVersion]);
 end;
 
 procedure TfrmLicence.btnLicenceExitClick(Sender: TObject);
