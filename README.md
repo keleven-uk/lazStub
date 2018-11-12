@@ -1,3 +1,3 @@
 Stub
 
-A template for future lazarus / freepascal projects.
+A template for future Lazarus / Free PASCAL projects.

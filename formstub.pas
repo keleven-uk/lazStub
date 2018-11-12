@@ -13,7 +13,7 @@ type
   { TfrmMain }
 
   TfrmMain = class(TForm)
-    mnuLicence   : TMenuItem;
+    mnuItmLicense   : TMenuItem;
     mnuItmOptions: TMenuItem;
     mnuItmHelp   : TMenuItem;
     mnuItmAbout  : TMenuItem;
@@ -26,11 +26,8 @@ type
 
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
-    procedure mnuItmAboutClick(Sender: TObject);
-    procedure mnuItmExitClick(Sender: TObject);
-    procedure mnuItmHelpClick(Sender: TObject);
+    procedure mnuItmClick(Sender: TObject);
     procedure mnuItmOptionsClick(Sender: TObject);
-    procedure mnuLicenceClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
     { private declarations }
@@ -85,29 +82,53 @@ begin
   userOptions.writeCurrentOptions;  // write out options file.
 end;
 
-procedure TfrmMain.mnuItmAboutClick(Sender: TObject);
-begin
-  frmAbout.ShowModal;
-end;
+//
+// ********************************************************* Menu Items *********
+//
+procedure TfrmMain.mnuItmClick(Sender: TObject);
+{  A generic click routine called by each menu item.
 
-procedure TfrmMain.mnuItmExitClick(Sender: TObject);
+   The action of the menu is determined from the item name.
+}
+VAR
+  itemName   : string;
 begin
-  Close;
-end;
+  itemName := '';
 
-procedure TfrmMain.mnuItmHelpClick(Sender: TObject);
-begin
-  frmhelp.ShowModal;
+  //  set the appropiate name.
+  if (Sender is TMenuItem) then
+    itemName := TMenuItem(Sender).Name;
+
+  if itemName = '' then exit;    //  not called by a TMenuItem
+
+  case itemName of
+  // ********************************************************* File Menu *********
+  'mnuItmExit': close;
+  // ********************************************************* Help Menu *********
+  'mnuItmHelp':
+  begin
+    frmhelp := TfrmHelp.Create(Nil);
+    frmhelp.ShowModal;
+    FreeAndNil(frmHelp);
+  end;
+  'mnuItmAbout':                                                      //  Calls the About screen.
+  begin
+    frmAbout := TfrmAbout.Create(Nil);  //frmAbout is created
+    frmAbout.ShowModal;                 //frmAbout is displayed
+    FreeAndNil(frmAbout);               //frmAbout is released
+  end;
+  'mnuItmLicense':                                                      //  Calls the License screen.
+  begin
+    frmLicence := TfrmLicence.Create(Nil);
+    frmLicence.ShowModal;
+    FreeAndNil(frmLicence);
+  end;
+  end;
 end;
 
 procedure TfrmMain.mnuItmOptionsClick(Sender: TObject);
 begin
   frmOptions.ShowModal;
-end;
-
-procedure TfrmMain.mnuLicenceClick(Sender: TObject);
-begin
-  frmLicence.Show;
 end;
 
 procedure TfrmMain.Timer1Timer(Sender: TObject);

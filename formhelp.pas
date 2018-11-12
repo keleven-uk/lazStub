@@ -48,16 +48,16 @@ begin
   mmoHelp.Append('');
 
   try
-    mmoHelp.Lines.LoadFromFile('help.txt');
+    mmoHelp.Lines.LoadFromFile('README.md');  // Use Github's readme file.
   except
     on Exception do begin
       mmoHelp.Append(' help file not found.');
       mmoHelp.Append('');
-      mmoHelp.Append(' This file should include full and detailed help intructions.');
+      mmoHelp.Append(' This file should include full and detailed help instructions.');
     end;
   end;
 
-  lblComments.Caption  := format('%s :: %s', [userOptions.productName,userOptions.Comments]);
+  lblComments.Caption  := format('%s :: %s', [userOptions.productName, userOptions.fileDescription]);
   lblCopyRight.Caption := userOptions.legalCopyright;
   lblVersion.Caption   := format('%s Version :: %s', [userOptions.productName, userOptions.fileVersion]);
 end;

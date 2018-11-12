@@ -187,7 +187,7 @@ object frmMain: TfrmMain
   Menu = mnuMain
   OnClose = FormClose
   OnCreate = FormCreate
-  LCLVersion = '1.8.2.0'
+  LCLVersion = '2.0.0.2'
   object stsBrInfo: TStatusBar
     Left = 0
     Height = 23
@@ -217,22 +217,22 @@ object frmMain: TfrmMain
       end
       object mnuItmExit: TMenuItem
         Caption = 'Exit'
-        OnClick = mnuItmExitClick
+        OnClick = mnuItmClick
       end
     end
     object mnuhelp: TMenuItem
       Caption = 'Help'
       object mnuItmHelp: TMenuItem
         Caption = 'Help'
-        OnClick = mnuItmHelpClick
+        OnClick = mnuItmClick
       end
-      object mnuLicence: TMenuItem
+      object mnuItmLicense: TMenuItem
         Caption = 'Licence'
-        OnClick = mnuLicenceClick
+        OnClick = mnuItmClick
       end
       object mnuItmAbout: TMenuItem
         Caption = 'About'
-        OnClick = mnuItmAboutClick
+        OnClick = mnuItmClick
       end
     end
   end

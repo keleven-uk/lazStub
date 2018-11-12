@@ -1,4 +1,17 @@
+Build 14
+
+Corrected but in saving options XML file.
+Amended frmHelp & fromLicence to use product name from options.
+Added generic menu click routine. 
+
+Currently
+1204 lines of source code.
+571 statements
+18.6% comment
+
+
 Build 13
+
 
 Corrected a bug with writing default options in uOptions.
 
@@ -7,7 +20,7 @@ Corrected a bug with compile time in formAbout.
 Currently
 1182 lines of source code.
 554 statements
-17.4% commen
+17.4% comment
 
 
 Build 12
@@ -16,9 +29,9 @@ commit 3ebc4e6431767f7feb01eaccc35a5eab6b234a35
 Author: Kevin Scott <lazStub@keleven.co.uk>
 Date:   Wed Mar 28 21:14:34 2018 +0100
 
-Brought Stub upto date.
+Brought Stub up to date.
 Changed the About screen - now look similar to the About screen in lazKlock.
-Changed the way the userOptions are saved to the XML file.  This refelcts the changes in lazKlock.
+Changed the way the userOptions are saved to the XML file.  This reflects the changes in lazKlock.
 
 Currently
 1172 lines of source code.
@@ -33,9 +46,10 @@ Author: Kevin Scott <lazStub@keleven.co.uk>
 Date:   Wed Mar 28 19:30:29 2018 +0100
 
 Code as at 28 march 2018.
-Compiles with lazarus 1.8.2.0
+Compiles with Lazarus 1.8.2.0
 Prior to uploading to GitHub.
 
+ 
 Build 10
 
 commit bae8fb7d318d10e5ac06c6e894a150254f9a913f
@@ -62,28 +76,6 @@ Date:   Sat Oct 14 21:55:43 2017 +0100
  362 statements
  13.6% comment
 
-.gitignore                      |   5 +-
-README.md                       |   3 +
-formabout.lfm                   | 713 ++++++++++++++++++++++++++++++++++++++++
-uabout.pas => formabout.pas     |  28 +-
-uhelp.lfm => formhelp.lfm       |  42 ++-
-uhelp.pas => formhelp.pas       |  17 +-
-ulicence.lfm => formlicence.lfm |  48 ++-
-ulicence.pas => formlicence.pas |  16 +-
-uoptions.lfm => formoptions.lfm |   7 +-
-formoptions.pas                 |  43 +++
-ustub.lfm => formstub.lfm       |   7 +-
-ustub.pas => formstub.pas       |  25 +-
-history.txt                     | 188 +++++++++++
-info.txt                        |  14 -
-powered_by.png                  | Bin 0 -> 15189 bytes
-stub.log                        |   4 +-
-stub.lpi                        | 224 ++++++-------
-stub.lpr                        |   4 +-
-uabout.lfm                      | 204 ------------
-uoptions.pas                    | 501 ++++++++++++++++++++++------
-20 files changed, 1608 insertions(+), 485 deletions(-)
-
 
 Build 9
 
@@ -96,12 +88,6 @@ Recompiled to check for Lazarus 1.0 RC1 [although showing 0.9.31 in about box]
 Also turned off generate debugging info GDB in linking options.
 This creates a lot smaller executable.
 
-stub.log     |   4 +--
-stub.lpi     | 104 ++++++++++++++++++++++++++++++++---------------------------
-uoptions.lfm |   2 +-
-uoptions.pas |   5 ++-
-ustub.lfm    |   2 +-
-5 files changed, 62 insertions(+), 55 deletions(-)
 
 Build 8
 
@@ -115,20 +101,6 @@ Added support for a options record, which is saved in an ini file.
     
 All modules now load version info from the options record.
 
-info.txt     |  11 +++--
-stub.ini     |   2 +
-stub.log     |   2 +
-stub.lpi     | 134 +++++++++++++++++++++++++++++------------------------------
-stub.lpr     |   2 +-
-uabout.lfm   |  24 +++++------
-uabout.pas   |   4 +-
-uhelp.pas    |   7 ++--
-ulicence.pas |   4 +-
-uoptions.lfm |   2 +-
-uoptions.pas |  86 ++++++++++++++++++++++++++++++++++++--
-ustub.lfm    |   1 +
-ustub.pas    |  25 ++++++++++-
-13 files changed, 205 insertions(+), 99 deletions(-)
 
 Build 7
 
@@ -140,18 +112,6 @@ Recompiled to check for Lazarus 0.9.30.4
     
 Changed icon to one with transparent background [thanks Zach]
 
-info.txt     |   8 +-
-stub.ico     | Bin 3262 -> 5430 bytes
-stub.lpi     |  16 ++--
-uabout.lfm   |  30 +++----
-uabout.pas   |   2 +-
-uhelp.lfm    |   6 +-
-uhelp.pas    |   2 +-
-ulicence.lfm |   6 +-
-ulicence.pas |   2 +-
-uoptions.lfm |   6 +-
-ustub.lfm    | 279 ++++++++++++++++++++++++++++++++++++-----------------------
-11 files changed, 212 insertions(+), 145 deletions(-)
 
 Build 6
 
@@ -161,14 +121,6 @@ Date:   Thu Oct 13 20:28:39 2016 +0100
 
 Slight change to label names to reflect stub.
 
-help.txt     |   2 -
-info.txt     |   8 ++--
-stub.lpi     | 118 +++++++++++++++++++++++++++++++----------------------------
-uabout.lfm   |   2 +-
-uabout.pas   |   4 +-
-uhelp.pas    |   2 +-
-ulicence.pas |   2 +-
-7 files changed, 72 insertions(+), 66 deletions(-)
 
 Build 5
 
@@ -178,19 +130,6 @@ Date:   Thu Oct 13 20:27:05 2016 +0100
 
 Changed help & about forms to load info from text files.
 
-help.txt     |   5 ++
-info.txt     |   6 +--
-stub.lpi     | 143 ++++++++++++++++++++++++++++++++---------------------
-stub.lpr     |   3 +-
-uabout.lfm   |  26 +++++-----
-uabout.pas   |   2 +-
-uhelp.lfm    |   2 +-
-uhelp.pas    |  25 +++++-----
-ulicence.lfm | 159 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-ulicence.pas |  62 +++++++++++++++++++++++
-ustub.lfm    |  14 ++++--
-ustub.pas    |  13 +++--
-12 files changed, 364 insertions(+), 96 deletions(-)
 
 Build 4
 
@@ -200,15 +139,6 @@ Date:   Thu Oct 13 20:25:19 2016 +0100
 
 as of 29 January 2012.
 
-GNU GENERAL PUBLIC LICENSE.txt                     | 674 +++++++++++++++
-...NU Project - Free Software Foundation (FSF).mht | 916 ---------------------
-stub.lpi                                           |  71 +-
-uabout.lfm                                         |  30 +-
-uhelp.lfm                                          |   6 +-
-uoptions.lfm                                       |   6 +-
-ustub.lfm                                          |  24 +-
-ustub.pas                                          |   8 +
-8 files changed, 777 insertions(+), 958 deletions(-)
 
 Build 3
 
@@ -223,17 +153,6 @@ Update Help form to V3 of GNU License.
 Added [blank] option screen.
 Added disk free space to about form.
 
-...NU Project - Free Software Foundation (FSF).mht | 916 +++++++++++++++++++++
-info.txt                                           |   8 +-
-stub.lpi                                           |  46 +-
-stub.lpr                                           |   1 -
-uabout.lfm                                         |  12 +-
-uabout.pas                                         |  10 +-
-uhelp.lfm                                          |  25 +-
-uhelp.pas                                          |  19 +-
-uoptions.lfm                                       |  42 +
-uoptions.pas                                       |  47 ++
-10 files changed, 1089 insertions(+), 37 deletions(-)
 
 Build 2
 
@@ -243,15 +162,6 @@ Date:   Thu Oct 13 20:15:27 2016 +0100
 
 as of 15 January 2012.
 
-info.txt   | 10 +++++-----
-stub.lpi   | 60 +++++++++++++++++++++++++++++++++++++++++++++++++-----------
-stub.lpr   |  3 ++-
-uabout.lfm |  9 +++++++--
-uabout.pas |  2 +-
-uhelp.lfm  | 10 ++++++++--
-ustub.lfm  |  8 ++++++--
-ustub.pas  |  9 ++++++++-
-8 files changed, 86 insertions(+), 25 deletions(-)
 
 Build 1
 
@@ -260,16 +170,3 @@ Author: Kevin Scott <lazStub@keleven.co.uk>
 Date:   Thu Oct 13 20:14:17 2016 +0100
 
 Initial import.
-
-.gitignore |  33 +++++++++++
-info.txt   |  15 +++++
-stub.ico   | Bin 0 -> 3262 bytes
-stub.lpi   | 180 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-stub.lpr   |  23 ++++++++
-uabout.lfm | 191 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-uabout.pas |  54 +++++++++++++++++
-uhelp.lfm  | 152 ++++++++++++++++++++++++++++++++++++++++++++++++
-uhelp.pas  |  51 +++++++++++++++++
-ustub.lfm  | 153 +++++++++++++++++++++++++++++++++++++++++++++++++
-ustub.pas  |  64 +++++++++++++++++++++
-11 files changed, 916 insertions(+)

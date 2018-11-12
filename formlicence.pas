@@ -55,9 +55,9 @@ begin
     end;
   end;
 
-  lblComments.Caption  := userOptions.Comments;
+  lblComments.Caption  := format('%s :: %s', [userOptions.productName, userOptions.fileDescription]);
   lblCopyRight.Caption := userOptions.legalCopyright;
-  lblVersion.Caption   := format('stub Version :: %s', [userOptions.fileVersion]);
+  lblVersion.Caption   := format('%s Version :: %s', [userOptions.productName, userOptions.fileVersion]);
 end;
 
 procedure TfrmLicence.btnLicenceExitClick(Sender: TObject);

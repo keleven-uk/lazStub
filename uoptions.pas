@@ -14,7 +14,7 @@ type
 
      When the class is created, the constructor first checks that the user directory
      exists - this should be something like c:\Users\<user>\AppData\Local\<app Name>\Options.xml.
-     The file name can be passed to the contructor, if it's absent the 'Options.xml' is used.
+     The file name can be passed to the constructor, if it's absent the 'Options.xml' is used.
      If this directory does not exist, it will be created.
 
      Next, the user options file is checked.  If it is exists, it is read.
@@ -49,7 +49,7 @@ type
       _productName     : string;
       _productVersion  : string;
 
-      _screenSave: boolean;           //  do we save Klock position or not.
+      _screenSave: boolean;           //  do we save stub position or not.
       _formTop   : integer;           //  the forms top left.
       _formLeft  : integer;
 
@@ -340,21 +340,21 @@ implementation
 
       //  Global
       ElementNode:=Doc.CreateElement('Global');
+        ElementNode.AppendChild(writeStrChild(doc, 'Comments',         fvi.fileComments));
+        ElementNode.AppendChild(writeStrChild(doc, 'companyName',      fvi.filecompanyName));
+        ElementNode.AppendChild(writeStrChild(doc, 'fileDescription',  fvi.filefileDescription));
+        ElementNode.AppendChild(writeStrChild(doc, 'fileVersion',      fvi.filefileVersion));
+        ElementNode.AppendChild(writeStrChild(doc, 'InternalName',     fvi.fileInternalName));
+        ElementNode.AppendChild(writeStrChild(doc, 'legalCopyright',   fvi.fileLegalCopyright));
+        ElementNode.AppendChild(writeStrChild(doc, 'originalFileName', fvi.fileOriginalFileName));
+        ElementNode.AppendChild(writeStrChild(doc, 'productName',      fvi.fileProductName));
+        ElementNode.AppendChild(writeStrChild(doc, 'productVersion',   fvi.fileProductVersion));
 
-      ElementNode.AppendChild(writeStrChild(doc, 'Comments',         fvi.fileComments));
-      ElementNode.AppendChild(writeStrChild(doc, 'companyName',      fvi.filecompanyName));
-      ElementNode.AppendChild(writeStrChild(doc, 'fileDescription',  fvi.filefileDescription));
-      ElementNode.AppendChild(writeStrChild(doc, 'fileVersion',      fvi.filefileVersion));
-      ElementNode.AppendChild(writeStrChild(doc, 'InternalName',     fvi.fileInternalName));
-      ElementNode.AppendChild(writeStrChild(doc, 'legalCopyright',   fvi.fileLegalCopyright));
-      ElementNode.AppendChild(writeStrChild(doc, 'originalFileName', fvi.fileOriginalFileName));
-      ElementNode.AppendChild(writeStrChild(doc, 'productName',      fvi.fileProductName));
-      ElementNode.AppendChild(writeStrChild(doc, 'productVersion',   fvi.fileProductVersion));
+        ElementNode.AppendChild(writeStrChild(doc, 'optionsName', optionsName));
 
-      ElementNode.AppendChild(writeStrChild(doc, 'optionsName', optionsName));
-
-      ElementNode.AppendChild(writeBolChild(doc,          'screenSave',   screenSave));
-      ElementNode.AppendChild(writeIntChildAttribute(Doc, 'formPosition', formTop, formLeft));
+        ElementNode.AppendChild(writeBolChild(doc,          'screenSave',   screenSave));
+        ElementNode.AppendChild(writeIntChildAttribute(Doc, 'formPosition', formTop, formLeft));
+      RootNode.AppendChild(ElementNode);
 
       try
         // Save XML
