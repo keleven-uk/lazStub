@@ -16,9 +16,9 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
-      <BuildNr Value="14"/>
+      <BuildNr Value="15"/>
       <Language Value="0809"/>
-      <StringTable Comments="conatct :: stub&lt;at>keleven.co.uk" CompanyName="www.keleven.co.uk" FileDescription="A template for future lazarus / freepascal projects" InternalName="Stub" LegalCopyright="(c) Kevin Scott [2012 - 2018]" OriginalFilename="Stub" ProductName="Stub" ProductVersion="Build 13"/>
+      <StringTable Comments="conatct :: stub&lt;at>keleven.co.uk" CompanyName="www.keleven.co.uk" FileDescription="A template for future lazarus / freepascal projects" InternalName="Stub" LegalCopyright="(c) Kevin Scott [2012 - 2018]" OriginalFilename="Stub" ProductName="Stub" ProductVersion="Build 15"/>
     </VersionInfo>
     <BuildModes Count="1" Active="Default">
       <Item1 Name="Default" Default="True"/>
@@ -37,7 +37,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="11">
+    <Units Count="12">
       <Unit0>
         <Filename Value="stub.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -74,9 +74,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="formAbout"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
-        <TopLine Value="95"/>
-        <CursorPos X="123" Y="71"/>
+        <TopLine Value="130"/>
+        <CursorPos X="19" Y="137"/>
         <UsageCount Value="54"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -87,13 +88,13 @@
         <ComponentName Value="frmHelp"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="16"/>
-        <CursorPos X="17" Y="16"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="31"/>
+        <CursorPos Y="50"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
-          <EditorIndex Value="4"/>
-          <TopLine Value="35"/>
-          <CursorPos X="107" Y="62"/>
+          <TopLine Value="22"/>
+          <CursorPos X="17" Y="16"/>
         </ExtraEditor1>
         <UsageCount Value="50"/>
         <Loaded Value="True"/>
@@ -121,8 +122,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="formLicence"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="32"/>
-        <CursorPos Y="58"/>
+        <TopLine Value="31"/>
+        <CursorPos X="17" Y="50"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -143,10 +144,8 @@
         <Filename Value="uoptions.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uOptions"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="327"/>
-        <CursorPos X="7" Y="358"/>
+        <CursorPos Y="2"/>
         <UsageCount Value="33"/>
         <Loaded Value="True"/>
       </Unit9>
@@ -160,127 +159,133 @@
         <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\diskh.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="11" Y="16"/>
+        <UsageCount Value="10"/>
+      </Unit11>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="formabout.pas"/>
-        <Caret Line="121" Column="3" TopLine="85"/>
-      </Position1>
-      <Position2>
-        <Filename Value="stubuntils.pas"/>
-        <Caret Line="42" Column="33"/>
-      </Position2>
-      <Position3>
-        <Filename Value="stubuntils.pas"/>
-        <Caret Line="8" Column="33"/>
-      </Position3>
-      <Position4>
         <Filename Value="formstub.pas"/>
         <Caret Line="57" Column="75" TopLine="36"/>
+      </Position1>
+      <Position2>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="312" Column="24" TopLine="283"/>
+      </Position2>
+      <Position3>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="9" Column="11"/>
+      </Position3>
+      <Position4>
+        <Filename Value="uoptions.pas"/>
+        <Caret Line="258" Column="69" TopLine="225"/>
       </Position4>
       <Position5>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="312" Column="24" TopLine="283"/>
+        <Caret Line="373" Column="71" TopLine="361"/>
       </Position5>
       <Position6>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="9" Column="11"/>
+        <Caret Line="287" Column="56" TopLine="257"/>
       </Position6>
       <Position7>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="258" Column="69" TopLine="225"/>
+        <Caret Line="362" Column="93" TopLine="252"/>
       </Position7>
       <Position8>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="373" Column="71" TopLine="361"/>
+        <Caret Line="276" Column="43" TopLine="255"/>
       </Position8>
       <Position9>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="287" Column="56" TopLine="257"/>
+        <Caret Line="67" Column="16" TopLine="49"/>
       </Position9>
       <Position10>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="362" Column="93" TopLine="252"/>
+        <Caret Line="283" Column="57" TopLine="258"/>
       </Position10>
       <Position11>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="276" Column="43" TopLine="255"/>
+        <Caret Line="276" Column="43" TopLine="256"/>
       </Position11>
       <Position12>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="67" Column="16" TopLine="49"/>
+        <Caret Line="362" Column="47" TopLine="342"/>
       </Position12>
       <Position13>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="283" Column="57" TopLine="258"/>
+        <Caret Line="518" Column="64" TopLine="485"/>
       </Position13>
       <Position14>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="276" Column="43" TopLine="256"/>
+        <Caret Line="89" Column="59" TopLine="57"/>
       </Position14>
       <Position15>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="362" Column="47" TopLine="342"/>
+        <Caret Line="303" Column="22" TopLine="295"/>
       </Position15>
       <Position16>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="518" Column="64" TopLine="485"/>
+        <Caret Line="469" Column="36" TopLine="449"/>
       </Position16>
       <Position17>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="89" Column="59" TopLine="57"/>
+        <Caret Line="484" Column="54" TopLine="448"/>
       </Position17>
       <Position18>
-        <Filename Value="uoptions.pas"/>
-        <Caret Line="303" Column="22" TopLine="295"/>
+        <Filename Value="stubuntils.pas"/>
+        <Caret Line="149"/>
       </Position18>
       <Position19>
-        <Filename Value="uoptions.pas"/>
-        <Caret Line="469" Column="36" TopLine="449"/>
+        <Filename Value="stubuntils.pas"/>
+        <Caret Line="8" Column="49"/>
       </Position19>
       <Position20>
         <Filename Value="uoptions.pas"/>
-        <Caret Line="484" Column="54" TopLine="448"/>
+        <Caret Line="9" Column="23"/>
       </Position20>
       <Position21>
-        <Filename Value="stubuntils.pas"/>
-        <Caret Line="149"/>
+        <Filename Value="formstub.pas"/>
+        <Caret Line="82" Column="58" TopLine="48"/>
       </Position21>
       <Position22>
-        <Filename Value="stubuntils.pas"/>
-        <Caret Line="8" Column="49"/>
+        <Filename Value="formstub.pas"/>
+        <Caret Line="101" Column="40" TopLine="81"/>
       </Position22>
       <Position23>
-        <Filename Value="uoptions.pas"/>
-        <Caret Line="9" Column="23"/>
+        <Filename Value="formstub.pas"/>
+        <Caret Line="109" Column="16" TopLine="97"/>
       </Position23>
       <Position24>
         <Filename Value="formstub.pas"/>
-        <Caret Line="82" Column="58" TopLine="48"/>
+        <Caret Line="107" Column="23" TopLine="91"/>
       </Position24>
       <Position25>
         <Filename Value="formstub.pas"/>
-        <Caret Line="31" TopLine="100"/>
+        <Caret Line="114" Column="47" TopLine="96"/>
       </Position25>
       <Position26>
-        <Filename Value="formstub.pas"/>
-        <Caret Line="101" Column="40" TopLine="81"/>
-      </Position26>
-      <Position27>
-        <Filename Value="formstub.pas"/>
-        <Caret Line="109" Column="16" TopLine="97"/>
-      </Position27>
-      <Position28>
-        <Filename Value="formstub.pas"/>
-        <Caret Line="107" Column="23" TopLine="91"/>
-      </Position28>
-      <Position29>
-        <Filename Value="formstub.pas"/>
-        <Caret Line="114" Column="47" TopLine="96"/>
-      </Position29>
-      <Position30>
         <Filename Value="stubuntils.pas"/>
         <Caret Line="200" Column="28" TopLine="181"/>
+      </Position26>
+      <Position27>
+        <Filename Value="formlicence.pas"/>
+        <Caret Line="46" TopLine="32"/>
+      </Position27>
+      <Position28>
+        <Filename Value="formabout.pas"/>
+        <Caret Line="122" Column="90" TopLine="100"/>
+      </Position28>
+      <Position29>
+        <Filename Value="formabout.pas"/>
+        <Caret Line="117" Column="36" TopLine="100"/>
+      </Position29>
+      <Position30>
+        <Filename Value="formabout.pas"/>
+        <Caret Line="126" Column="58" TopLine="131"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

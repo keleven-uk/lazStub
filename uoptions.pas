@@ -334,7 +334,7 @@ implementation
       Doc := TXMLDocument.Create;
 
       // Create a root node
-      RootNode := Doc.CreateElement('Klock');
+      RootNode := Doc.CreateElement('Stub');
       Doc.Appendchild(RootNode);
       RootNode:= Doc.DocumentElement;
 

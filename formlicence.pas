@@ -43,12 +43,13 @@ uses
 
 procedure TfrmLicence.FormCreate(Sender: TObject);
 begin
-  mmoLicence.Append('Stub.');
-  mmoLicence.Append('');
   try
     mmoLicence.Lines.LoadFromFile('GNU GENERAL PUBLIC LICENSE.txt');
   except
     on Exception do begin
+      mmoLicence.Append(userOptions.productName);
+      mmoLicence.Append('');
+      mmoLicence.Append('');
       mmoLicence.Append(' help License not found.');
       mmoLicence.Append('');
       mmoLicence.Append(' The application is issued under the GNU GENERAL PUBLIC LICENSE.');

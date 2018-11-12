@@ -1,3 +1,16 @@
+Build 15
+
+Added FileSizeToHumanReadableString to frmAbout, this is used to format the
+size of the disc drives.
+Amended fromHelp to use product name from user options.
+Amended fromLicence to use product name from user options.
+
+Currently
+1240 lines of source code.
+599 statements
+18.2% comment
+
+
 Build 14
 
 Corrected but in saving options XML file.

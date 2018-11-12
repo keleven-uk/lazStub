@@ -43,14 +43,13 @@ uses
 
 procedure TfrmHelp.FormCreate(Sender: TObject);
 begin
-  mmoHelp.Append('Stub.');
-  mmoHelp.Append('');
-  mmoHelp.Append('');
-
   try
     mmoHelp.Lines.LoadFromFile('README.md');  // Use Github's readme file.
   except
     on Exception do begin
+      mmoHelp.Append(userOptions.productName);
+      mmoHelp.Append('');
+      mmoHelp.Append('');
       mmoHelp.Append(' help file not found.');
       mmoHelp.Append('');
       mmoHelp.Append(' This file should include full and detailed help instructions.');

@@ -16,9 +16,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TfrmOptions, frmOptions);
-  Application.CreateForm(TfrmAbout, frmAbout);
-  Application.CreateForm(TfrmHelp, frmhelp);
-  Application.CreateForm(TfrmLicence, frmLicence);
   Application.Run;
 end.
 

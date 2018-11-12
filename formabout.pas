@@ -34,12 +34,20 @@ type
     procedure btnAboutExitClick(Sender: TObject);
     procedure btnAboutMSInfoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure tmrUpTimeTimer(Sender: TObject);
   private
-    { private declarations }
+    procedure tmrUpTimeTimer(Sender: TObject);
+    function FileSizeToHumanReadableString(fileSize: Int64): string;
   public
     { public declarations }
   end; 
+
+const
+  OneKB = Int64(1024);
+  OneMB = Int64(1024) * OneKB;
+  OneGB = Int64(1024) * OneMB;
+  OneTB = Int64(1024) * OneGB;
+  OnePB = Int64(1024) * OneTB;
+  fmt   = '#.###';
 
 var
   frmAbout: TfrmAbout;
@@ -114,8 +122,8 @@ begin
   // Display the free space on drives B, C, D, E, F, where present
   for i := 2 to 10 do
   begin
-    dskFree := FloatToStrF(DiskFree(i) / 1073741824, ffFixed, 3, 2);
-    dskSize := FloatToStrF(DiskSize(i) / 1073741824, ffFixed, 3, 2);
+    dskFree := FileSizeToHumanReadableString(DiskFree(i));
+    dskSize := FileSizeToHumanReadableString(DiskSize(i));
 
     if DiskSize(i) >= 0 then
     begin
@@ -123,6 +131,35 @@ begin
       LstBxDiscSpace.Items.Add(message);
     end;
   end;
+
+end;
+
+function TfrmAbout.FileSizeToHumanReadableString(fileSize: Int64): string;
+{  Returns filesize in a human readable form.
+   Does not use ther silly ISO standard unit of Pib, TiB, GiB, MiB & KiB.
+   Used the good old fashion units of Pib, TB, GB, MB & KB.
+}
+
+begin
+  if fileSize > OnePB then
+    result := FormatFloat(fmt + 'PB', fileSize / OnePB)
+  else
+    if fileSize > OneTB then
+      result := FormatFloat(fmt + 'TB', fileSize / OneTB)
+    else
+      if fileSize > OneGB then
+        result := FormatFloat(fmt + 'GB', fileSize / OneGB)
+      else
+        if fileSize > OneMB then
+          result := FormatFloat(fmt + 'MB', fileSize / OneMB)
+        else
+          if fileSize > OneKB then
+            result := FormatFloat(fmt + 'KB', fileSize / OneKB)
+          else
+            if fileSize > 0 then
+              result := FormatFloat(fmt + 'bytes', fileSize)
+            else
+              result := ''
 
 end;
 
