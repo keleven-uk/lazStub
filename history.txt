@@ -1,3 +1,13 @@
+Build 16
+
+Amended frmAbout to be more generic - takes all parameters from userOptions.
+
+Currently
+1237 lines of source code.
+599 statements
+18.3% comment
+
+
 Build 15
 
 Added FileSizeToHumanReadableString to frmAbout, this is used to format the

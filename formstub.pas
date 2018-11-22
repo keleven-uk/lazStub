@@ -53,21 +53,19 @@ VAR
   DebugFleName : String;
 begin
   appStartTime := GetTickCount64;  //  tick count when application starts.
+  userOptions  := Options.Create;  // create options file as c:\Users\<user>\AppData\Local\Stub\Options.xml
   debug        := true ;
 
   if debug then begin
-    DebugFleName := 'stub.log';
+    DebugFleName := format('%s.log', [userOptions.productName]);
     assignfile(debugFle, DebugFleName);
     rewrite(debugFle);
     writeLn(debugFle, format ('%s : %s Created', [timeToStr(now), DebugFleName]));
   end;
 
-  userOptions := Options.Create;  // create options file as c:\Users\<user>\AppData\Local\Stub\Options.xml
-
   frmMain.Top  := UserOptions.formTop;
   frmmain.Left := UserOptions.formLeft;
 end;
-
 
 procedure TfrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
@@ -81,7 +79,6 @@ begin
 
   userOptions.writeCurrentOptions;  // write out options file.
 end;
-
 //
 // ********************************************************* Menu Items *********
 //

@@ -207,7 +207,7 @@ object frmAbout: TfrmAbout
     end
   end
   object Panel4: TPanel
-    Left = 8
+    Left = 0
     Height = 336
     Top = 8
     Width = 306
@@ -707,38 +707,27 @@ object frmAbout: TfrmAbout
         895384A7330000000049454E44AE426082
       }
     end
-    object lblProgrammer: TLabel
-      Left = 137
-      Height = 13
-      Top = 96
-      Width = 134
-      Caption = 'Kevin Scott  (c) 2012 - 2018'
-      Font.Height = 13
-      ParentColor = False
-      ParentFont = False
-    end
-    object lblProgramDescription: TLabel
-      Left = 152
-      Height = 30
-      Top = 64
-      Width = 40
-      Caption = 'stub'
-      Font.Height = -21
-      ParentColor = False
-      ParentFont = False
-    end
     object lblProgramName: TLabel
-      Left = 168
+      Left = 136
       Height = 39
       Top = 24
-      Width = 114
+      Width = 111
       Caption = 'lblProgramName'
       Font.CharSet = ANSI_CHARSET
       Font.Height = -21
       Font.Name = 'Gabriola'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      Font.Style = [fsItalic]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblProgrammer: TLabel
+      Left = 137
+      Height = 13
+      Top = 96
+      Width = 77
+      Caption = 'legal copyright'
+      Font.Height = 13
       ParentColor = False
       ParentFont = False
     end
