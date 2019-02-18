@@ -6,23 +6,24 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  ComCtrls, Menus, formAbout, formhelp, formOptions, formLicence, uOptions;
+  ComCtrls, Menus, formAbout, formhelp, formOptions, formLicence, uOptions,
+  ULogging, stubUntils;
 
 type
 
   { TfrmMain }
 
   TfrmMain = class(TForm)
-    mnuItmLicense   : TMenuItem;
-    mnuItmOptions: TMenuItem;
-    mnuItmHelp   : TMenuItem;
-    mnuItmAbout  : TMenuItem;
-    mnuItmExit   : TMenuItem;
-    mnuhelp      : TMenuItem;
-    mnuFile      : TMenuItem;
-    mnuMain      : TMainMenu;
-    stsBrInfo    : TStatusBar;
-    Timer1       : TTimer;
+    mnuItmLicense : TMenuItem;
+    mnuItmOptions : TMenuItem;
+    mnuItmHelp    : TMenuItem;
+    mnuItmAbout   : TMenuItem;
+    mnuItmExit    : TMenuItem;
+    mnuhelp       : TMenuItem;
+    mnuFile       : TMenuItem;
+    mnuMain       : TMainMenu;
+    stsBrInfo     : TStatusBar;
+    Timer1        : TTimer;
 
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -37,10 +38,9 @@ type
 
 var
   frmMain     : TfrmMain;
-  userOptions : Options;
-  debugFle    : text;
-  debug       : Boolean;
-  appStartTime: int64;          //  used by formAbout to determine how long the app has been running.
+  userOptions : Options;    //  used to hold all the user options.
+  kLog        : Logger;     //  used to log errors, debug statements etc.
+  appStartTime: int64;      //  used by formAbout to determine how long the app has been running.
 implementation
 
 {$R *.lfm}
@@ -49,35 +49,33 @@ implementation
 
 
 procedure TfrmMain.FormCreate(Sender: TObject);
-VAR
-  DebugFleName : String;
 begin
   appStartTime := GetTickCount64;  //  tick count when application starts.
   userOptions  := Options.Create;  // create options file as c:\Users\<user>\AppData\Local\Stub\Options.xml
-  debug        := true ;
 
-  if debug then begin
-    DebugFleName := format('%s.log', [userOptions.productName]);
-    assignfile(debugFle, DebugFleName);
-    rewrite(debugFle);
-    writeLn(debugFle, format ('%s : %s Created', [timeToStr(now), DebugFleName]));
-  end;
+  kLog := Logger.Create;
+  logHeader;
 
   frmMain.Top  := UserOptions.formTop;
   frmmain.Left := UserOptions.formLeft;
+
+  //if userOptions.cullLogs then     //  Removed old log files, if instructed.
+  //  kLog.cullLogFile(userOptions.CullLogsDays);
+  kLog.cullLogFile(14);
 end;
 
 procedure TfrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  if debug then begin
-    writeLn(debugFle, format ('%s : log file Closed', [timeToStr(now)]));
-    CloseFile(debugFle);
-  end;
+  UserOptions.formTop  := frmMain.Top;
+  UserOptions.formLeft := frmmain.Left;
 
-   UserOptions.formTop  := frmMain.Top;
-   UserOptions.formLeft := frmmain.Left;
+  logFooter;
+  kLog.Free;                        //  Release the logger object.
 
   userOptions.writeCurrentOptions;  // write out options file.
+  userOptions.Free;
+
+  CloseAction:= caFree;
 end;
 //
 // ********************************************************* Menu Items *********

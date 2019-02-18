@@ -5,12 +5,15 @@ unit stubUntils;
 interface
 
 uses
-  Classes, SysUtils, strutils, process, Graphics;
+  Classes, SysUtils, strutils, process, Graphics, LCLVersion, forms;
 
 function FontToString(f: TFont): string;
 function StringToFont(s: string): TFont;
 function getUpTime(system: string): string;
 function getWindowsVersion: string;
+procedure logHeader;
+procedure logMessage(message: string);
+procedure logFooter;
 
 implementation
 
@@ -212,6 +215,47 @@ begin
   winVer.Free;
 
   Result := tmpWinVer;
+end;
+
+procedure logHeader;
+{  Write header information to log file.    }
+begin
+  kLog.writeLog('............................................................');
+  kLog.writeLog(userOptions.InternalName);
+  kLog.writeLog('User : ' + SysUtils.GetEnvironmentVariable('USERNAME'));  // not the one in windows.
+  kLog.writeLog('PC   : ' + SysUtils.GetEnvironmentVariable('COMPUTERNAME'));
+  kLog.writeLog('OS   : ' + getWindowsVersion);
+  kLog.writeLog(format('lazKlock Build   :: %s', [userOptions.productVersion]));
+  kLog.writeLog(format('lazKlock Version :: %s', [userOptions.fileVersion]));
+  {$ifdef WIN32}
+    kLog.writeLog(format('Built with 32 bit Lazarus Version :: %s', [lcl_version]));
+  {$else}
+    kLog.writeLog(format('Built with 64 bit Lazarus Version :: %s', [lcl_version]));
+  {$endif}
+  kLog.writeLog('App Dir : ' + ExtractFilePath(Application.ExeName));
+  kLog.writeLog('............................................................');
+end;
+
+procedure logMessage(message: string);
+{  Write a message to the log file and the splash file.
+   Should only really be used when the splash screen could be open i.e. when
+   the application is starting or finishing.  Was created when there was a fault
+   logging such messages when the fonts where being loaded and removed.
+}
+begin
+  klog.writeLog(message);
+  Application.Processmessages;
+end;
+
+procedure logFooter;
+{  Write footer to log file.    }
+begin
+  kLog.writeLog('..............................................................');
+  kLog.writeLog('System has been running for ' + getUpTime('System'));
+  kLog.writeLog('Klock has been running for  ' + getUpTime('Application'));
+  kLog.writeLog('Klock Ending [normaly]');
+  klog.writeLog('Bye');
+  kLog.writeLog('..............................................................');
 end;
 
 

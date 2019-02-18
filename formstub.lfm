@@ -187,7 +187,7 @@ object frmMain: TfrmMain
   Menu = mnuMain
   OnClose = FormClose
   OnCreate = FormCreate
-  LCLVersion = '2.0.0.2'
+  LCLVersion = '2.0.0.4'
   object stsBrInfo: TStatusBar
     Left = 0
     Height = 23
